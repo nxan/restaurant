@@ -23,11 +23,13 @@ class MenuOrderViewController: UIViewController {
     
     let URL_GROUP_FOOD = "http://localhost:8888/group_food/"
     let URL_FOOD = "http://localhost:8888/food/"
+    let URL_ORDER = "http://localhost:8888/order/"
+    let URL_ORDER_DETAIL = "http://localhost:8888/orderdetail/"
     
     let cellId = "MenuCell"
     let time = Date()
-    var deskId = 0
-    var deskName = ""
+    var desk: Desk!
+    var flagUpdated = false
     
     var menu: [Menu] = []
     var filterMenu: [Menu] = []
@@ -37,6 +39,8 @@ class MenuOrderViewController: UIViewController {
     var attributedStringItems: [NSAttributedString] = []
     var selectedAttributedStringItems: [NSAttributedString] = []
     var countItemCart: Int = 0
+    var flag = false
+    var flagRemove = false
     
     
     var defaultAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.black]
@@ -49,14 +53,17 @@ class MenuOrderViewController: UIViewController {
         searchBar.delegate = self
         searchBar.delegate = self
         
+        let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
+        labelTime.text = "\(time.hour):\(minute)"
+        labelDesk.text = desk.deskName
+        
+        countItemCart = desk.quantity
         buttonBasket.badgeString = String(countItemCart)
+        
         generateGroupFood()
         generateFood(group: 1)
         
-        let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
-        labelTime.text = "\(time.hour):\(minute)"
         
-        labelDesk.text = deskName
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,11 +78,14 @@ class MenuOrderViewController: UIViewController {
             self.tableView.reloadData()
         }
         self.buttonBasket.badgeString = String(self.countItemCart)
+        
+        print(cart)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
     }
     
     @IBAction func addToCart(_ sender: Any) {
@@ -121,7 +131,7 @@ class MenuOrderViewController: UIViewController {
                     }
                 }
         }
-    }
+    }       
     
     func showSegmentedControlView() {
         
@@ -152,16 +162,51 @@ extension MenuOrderViewController: UITableViewDelegate, UITableViewDataSource, U
         cell.btnAdd = {
             self.countItemCart += 1
             self.buttonBasket.badgeString = String(self.countItemCart)
+            UserDefaults.standard.set(true, forKey: "flagAddCart")
             
-            let newCart = Cart(id: self.filterMenu[indexPath.row].productId, name: self.filterMenu[indexPath.row].name, quantity: 1, price: self.filterMenu[indexPath.row].price)
-            if let oldCartIndex = self.cart.firstIndex(where: { $0.id == newCart.id }) {
-                var cart = self.cart[oldCartIndex]
-                cart.quantity += 1
-                self.cart[oldCartIndex] = cart
+            if(self.desk.enable) {
+                if let value = UserDefaults.standard.value(forKey: "flagAddCart") {
+                    let flagAdd = value as! Bool
+                    if(flagAdd && !self.flagRemove) {
+                        self.cart.removeAll()
+                        self.flagRemove = true
+                    }
+                }
+                Alamofire.request(self.URL_ORDER_DETAIL + "getOne/\(self.desk.deskId)", method: .get, encoding: JSONEncoding.default).responseJSON
+                    { (response) in
+                        if let responseValue = response.result.value as! [String: Any]? {
+                            if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
+                                if(!self.flag) {
+                                    for item in responseOrder {
+                                        self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false))
+                                    }
+                                    self.flag = true
+                                }
+                                let newCart = Cart(id: self.filterMenu[indexPath.row].productId, name: self.filterMenu[indexPath.row].name, quantity: 1, price: self.filterMenu[indexPath.row].price, updated: false)
+                                if let oldCartIndex = self.cart.firstIndex(where: { $0.id == newCart.id }) {
+                                    var cartIndex = self.cart[oldCartIndex]
+                                    cartIndex.quantity += 1
+                                    cartIndex.updated = true
+                                    self.cart[oldCartIndex] = cartIndex
+                                    
+                                } else {
+                                    self.cart.append(newCart)
+                                }
+                                self.flagUpdated = true
+                            }
+                        }
+                }
             } else {
-                self.cart.append(newCart)
+                let newCart = Cart(id: self.filterMenu[indexPath.row].productId, name: self.filterMenu[indexPath.row].name, quantity: 1, price: self.filterMenu[indexPath.row].price, updated: false)
+                if let oldCartIndex = self.cart.firstIndex(where: { $0.id == newCart.id }) {
+                    var cart = self.cart[oldCartIndex]
+                    cart.quantity += 1
+                    self.cart[oldCartIndex] = cart
+                } else {
+                    self.cart.append(newCart)
+                }
+                self.flagUpdated = false
             }
-            print(self.cart)
         }
         return cell
     }
@@ -178,20 +223,18 @@ extension MenuOrderViewController: UITableViewDelegate, UITableViewDataSource, U
         if let viewController = segue.destination as? MenuContainerViewController,
             segue.identifier == "showMenuDetail" {
             let row = (sender as! IndexPath).row
-            viewController.productName = filterMenu[row].name
-            viewController.price = filterMenu[row].price
-            viewController.productId = filterMenu[row].productId
+            viewController.desk = desk
+            viewController.menu = filterMenu[row]
             viewController.cart = cart
             viewController.countItemCart = countItemCart
-            viewController.deskId = deskId
-            viewController.deskName = deskName
+            viewController.flagUpdated = flagUpdated
         }
         if segue.identifier == "showCart" {
             let viewController = segue.destination as? CartViewController
+            viewController?.desk = desk
             viewController?.cart = cart
             viewController?.countItemCart = countItemCart
-            viewController?.deskId = deskId
-            viewController?.deskName = deskName
+            viewController?.flagUpdated = flagUpdated
         }
     }
     

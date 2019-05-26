@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Alamofire
 
 class MenuDetailViewController: UITableViewController {
+    
+    let URL_ORDER_DETAIL = "http://localhost:8888/orderdetail/"
     
     @IBOutlet weak var txtProductName: UITextField!
     @IBOutlet weak var txtType: UITextField!
@@ -20,42 +23,82 @@ class MenuDetailViewController: UITableViewController {
     
     var type = ["Nóng", "Lạnh"]
     var selectItem: String?
-    var productName = ""
-    var price: Double = 0
     var cart: [Cart] = []
     var countItemCart: Int = 0
-    var deskId = 0
-    var deskName = ""
-    var productId = 0
+    var desk: Desk!
+    var menu: Menu!
+    var flagUpdated = false
     
     @IBAction func btnAddProduct(_ sender: Any) {
-        let newCart = Cart(id: productId, name: txtProductName.text!, quantity: Int(labelCount.text!)!, price: price)
-        if let oldCartIndex = self.cart.firstIndex(where: { $0.name == newCart.name }) {
-            var cart = self.cart[oldCartIndex]
-            cart.quantity += Int(labelCount.text!)!
-            countItemCart += Int(labelCount.text!)!
-            self.cart[oldCartIndex] = cart
-        } else {
-            self.cart.append(newCart)
-            countItemCart += Int(labelCount.text!)!
-        }
-        print(cart)
-        let alertController = UIAlertController(title: "Thông báo", message: "Thêm sản phẩm thành công", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {
-            UIAlertAction in
-            let controller = self.navigationController!.viewControllers[1] as! MenuOrderViewController
-            controller.cart = self.cart
-            controller.countItemCart = self.countItemCart
-            self.navigationController!.popToViewController(controller, animated: true)
-        }
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        
+        if(self.desk.enable) {
+            if let value = UserDefaults.standard.value(forKey: "flagAddCart") {
+                let flagAdd = value as! Bool
+                if(flagAdd) {
+                    self.cart.removeAll()
+                }
+            }
+            Alamofire.request(self.URL_ORDER_DETAIL + "getOne/\(self.desk.deskId)", method: .get, encoding: JSONEncoding.default).responseJSON
+                { (response) in
+                    if let responseValue = response.result.value as! [String: Any]? {
+                        if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
+                            for item in responseOrder {
+                                self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false))
+                            }
+                            let newCart = Cart(id: self.menu.productId, name: self.txtProductName.text!, quantity: Int(self.labelCount.text!)!, price: self.menu.price, updated: false)
+                            if let oldCartIndex = self.cart.firstIndex(where: { $0.id == newCart.id }) {
+                                var cart = self.cart[oldCartIndex]
+                                cart.quantity += Int(self.labelCount.text!)!
+                                self.countItemCart += Int(self.labelCount.text!)!
+                                cart.updated = true
+                                self.cart[oldCartIndex] = cart
+                                
+                            } else {
+                                self.cart.append(newCart)
+                            }
+                            self.flagUpdated = true
+                            let alertController = UIAlertController(title: "Thông báo", message: "Thêm sản phẩm thành công", preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {
+                                UIAlertAction in
+                                let controller = self.navigationController!.viewControllers[1] as! MenuOrderViewController
+                                controller.cart = self.cart
+                                controller.countItemCart = self.countItemCart
+                                self.navigationController!.popToViewController(controller, animated: true)
+                            }
+                            alertController.addAction(okAction)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    }
+                }
+            } else {
+                let newCart = Cart(id: menu.productId, name: txtProductName.text!, quantity: Int(labelCount.text!)!, price: menu.price, updated: false)
+                if let oldCartIndex = self.cart.firstIndex(where: { $0.name == newCart.name }) {
+                    var cart = self.cart[oldCartIndex]
+                    cart.quantity += Int(labelCount.text!)!
+                    countItemCart += Int(labelCount.text!)!
+                    self.cart[oldCartIndex] = cart
+                } else {
+                    self.cart.append(newCart)
+                    countItemCart += Int(labelCount.text!)!
+                }
+                let alertController = UIAlertController(title: "Thông báo", message: "Thêm sản phẩm thành công", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {
+                    UIAlertAction in
+                    let controller = self.navigationController!.viewControllers[1] as! MenuOrderViewController
+                    controller.cart = self.cart
+                    controller.countItemCart = self.countItemCart
+                    self.navigationController!.popToViewController(controller, animated: true)
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtProductName.text = productName
+        txtProductName.text = menu.name
         createPickerViewType()
         createToolbarPickerView()
     }

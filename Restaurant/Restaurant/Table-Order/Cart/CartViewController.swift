@@ -26,11 +26,12 @@ class CartViewController: UIViewController {
     
     let cellId = "CartCell"
     var cart: [Cart] = []
+    var cartUpdated: [Cart] = []
     let headers = ["Thành phần"]
     var countItemCart: Int = 0
-    var deskId = 0
-    var deskName = ""
+    var desk: Desk!
     var time = Date()
+    var flagUpdated = false
     
     @IBAction func buttonBack(_ sender: Any) {
         let controller = self.navigationController!.viewControllers[1] as! MenuOrderViewController
@@ -43,12 +44,16 @@ class CartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customButtonPlaceOrder()
-        labelDesk.text = deskName
+        labelDesk.text = desk.deskName
+        getFoodByDesk(deskId: desk.deskId)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)        
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        print(cart)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,7 +74,7 @@ class CartViewController: UIViewController {
         let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
         let parameters = [
             "INHOADON": false,
-            "MaBan": deskId,
+            "MaBan": desk.deskId,
             "GIOVAO": "\(time.hour):\(minute)",
             "GIORA": "",
             "KETTHUC": false,
@@ -91,7 +96,7 @@ class CartViewController: UIViewController {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                 print(json)
-                self.getDeskNotEmpty(deskId: self.deskId)
+                self.checkDeskEnable(deskId: self.desk.deskId)
             } catch {
                 print("error")
             }
@@ -99,7 +104,7 @@ class CartViewController: UIViewController {
         task.resume()
     }
     
-    func getDeskNotEmpty(deskId: Int) {
+    func checkDeskEnable(deskId: Int) {
         var orderId = ""
         Alamofire.request(URL_ORDER + "checkDesk/\(deskId)", method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in
@@ -108,7 +113,7 @@ class CartViewController: UIViewController {
                         for item in responseOrder {
                             orderId = item["SOHOADON"] as! String
                             self.saveFood(orderId: orderId)
-                            self.updateDeskFullAndCount(deskId: deskId)
+                            self.updateDeskHasPeople(deskId: deskId)
                         }
                     }
                 }
@@ -144,12 +149,12 @@ class CartViewController: UIViewController {
         }
     }
     
-    func updateDeskFullAndCount(deskId: Int) {
+    func updateDeskHasPeople(deskId: Int) {
         let parameters = [
             "TongMon": countItemCart
         ] as Dictionary<String, Any>
         print(parameters)
-        var request = URLRequest(url: URL(string: URL_DESK + "updateDeskFull/" + "\(deskId)")!)
+        var request = URLRequest(url: URL(string: URL_DESK + "updateDeskHasPeople/" + "\(deskId)")!)
         request.httpMethod = "PUT"
         request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -165,6 +170,25 @@ class CartViewController: UIViewController {
         })
         task.resume()
     }
+    
+    func getFoodByDesk(deskId: Int) {
+        if(desk.enable && !flagUpdated) {
+            cart.removeAll()
+            UserDefaults.standard.set(false, forKey: "flagAddCart")
+            Alamofire.request(self.URL_ORDER_DETAIL + "getOne/\(deskId)", method: .get, encoding: JSONEncoding.default).responseJSON
+                { (response) in
+                    if let responseValue = response.result.value as! [String: Any]? {
+                        if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
+                                for item in responseOrder {
+                                    self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false))
+                                    self.tableView.reloadData()
+                                }
+                        }
+                    }
+            }
+        }
+    }
+    
     
 }
 
@@ -212,7 +236,6 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
                 tableView.deleteRows(at: [tempIndexPath], with: .fade)
             }
             tableView.reloadData()
-            print(cart)
         }
     }
         

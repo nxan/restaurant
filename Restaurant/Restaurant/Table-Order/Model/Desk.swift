@@ -13,14 +13,16 @@ struct Desk  {
     let deskName: String
     let enable: Bool
     let place: Int
-    let count: Int
+    let quantity: Int
+    var timeOn: String
 
-    init(deskId: Int, deskName: String, enable: Bool, place: Int, count: Int) {
+    init(deskId: Int, deskName: String, enable: Bool, place: Int, quantity: Int, timeOn: String) {
         self.deskId = deskId
         self.deskName = deskName
         self.enable = enable
         self.place = place
-        self.count = count
+        self.quantity = quantity
+        self.timeOn = timeOn
     }
 }
 

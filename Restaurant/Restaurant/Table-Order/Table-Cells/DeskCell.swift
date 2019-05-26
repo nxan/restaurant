@@ -30,7 +30,7 @@ class DeskCell: UICollectionViewCell {
     
     func configureWith(_ desk: Desk) {
         labelDeskId.text = "Số bàn: \(desk.deskName)"
-        labelCountOrder.text = "Số món gọi: \(desk.count)"
+        labelCountOrder.text = "Số món gọi: \(desk.quantity)"
         if(desk.enable) {
             labelStatus.text = "Trạng thái: Đã có người"
             let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"

@@ -96,7 +96,7 @@ class DeskViewController: UIViewController {
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                         self.deskJSON = responseOrder
                         for desk in self.deskJSON {
-                            self.desks.append(Desk(deskId: desk["MaBan"] as! Int, deskName: desk["TenBan"] as! String, enable: (desk["HienThi"]) as! Bool, place: desk["Khu"] as! Int, count: desk["TongMon"] as! Int))
+                            self.desks.append(Desk(deskId: desk["MaBan"] as! Int, deskName: desk["TenBan"] as! String, enable: (desk["HienThi"]) as! Bool, place: desk["Khu"] as! Int, quantity: desk["TongMon"] as! Int, timeOn: desk["GIOVAO"] as! String))
                         }
                         self.initDeskCollection(desks: self.desks)
                         self.collectionView.reloadData()
@@ -150,8 +150,7 @@ extension DeskViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller =  self.storyboard!.instantiateViewController(withIdentifier: "toMenuOrder") as! MenuOrderViewController
-        controller.deskId = Int(desks[indexPath.row].deskId)
-        controller.deskName = String(desks[indexPath.row].deskName)
+        controller.desk = desks[indexPath.row]
         self.navigationController?.pushViewController(controller, animated:true)
     }
     

@@ -14,6 +14,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in closure #1 in MenuOrderViewController.tableView(_:cellForRowAt:):MenuOrderViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cart">
+            </PersistentString>
+            <PersistentString
+               value = "self.cart[oldCartIndex]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in DeskViewController.fetchDesk():DeskViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -33,10 +44,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static DeskHelper.generateFloor1():DeskHelper.swift">
+         contextName = "MenuOrderViewController.viewDidLoad():MenuOrderViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "desksJSON">
+               value = "menu.count">
+            </PersistentString>
+            <PersistentString
+               value = "desk">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in MenuOrderViewController.viewWillAppear(_:):MenuOrderViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "menu">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -58,18 +80,10 @@
          contextName = "MenuCell.configureWith(_:):MenuCell.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in MenuOrderViewController.viewWillAppear(_:):MenuOrderViewController.swift">
+         contextName = "static DeskHelper.generateFloor1():DeskHelper.swift">
          <PersistentStrings>
             <PersistentString
-               value = "menu">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DeskViewController.fetchDesk():DeskViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "response">
+               value = "desksJSON">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -78,6 +92,14 @@
          <PersistentStrings>
             <PersistentString
                value = "desks">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DeskViewController.fetchDesk():DeskViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -119,6 +141,9 @@
          <PersistentStrings>
             <PersistentString
                value = "row">
+            </PersistentString>
+            <PersistentString
+               value = "cart">
             </PersistentString>
             <PersistentString
                value = "segue.identifier">

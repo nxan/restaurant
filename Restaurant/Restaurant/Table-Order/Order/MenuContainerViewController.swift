@@ -10,14 +10,13 @@ import UIKit
 
 class MenuContainerViewController: UIViewController {
     
-    var productName = ""
-    var price: Double = 0
+    
     var cart: [Cart] = []
     var countItemCart: Int = 0
-    var deskId = 0
-    var deskName = ""
-    var productId = 0
+    var desk: Desk!
+    var menu: Menu!
     let time = Date()
+    var flagUpdated = false
     
     @IBOutlet weak var labelDesk: UILabel!
     @IBOutlet weak var labelTime: UILabel!
@@ -32,7 +31,7 @@ class MenuContainerViewController: UIViewController {
         
         let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
         labelTime.text = "\(time.hour):\(minute)"
-        labelDesk.text = deskName
+        labelDesk.text = desk.deskName
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,13 +48,11 @@ class MenuContainerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? MenuDetailViewController,
             segue.identifier == "showEmbedMenuDetail" {
-            viewController.productName = productName
-            viewController.price = price
+            viewController.desk = desk
+            viewController.menu = menu
             viewController.cart = cart
             viewController.countItemCart = countItemCart
-            viewController.deskId = deskId
-            viewController.deskName = deskName
-            viewController.productId = productId
+            viewController.flagUpdated = flagUpdated
         }
     }
        
