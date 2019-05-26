@@ -20,6 +20,9 @@ class CartCell: UITableViewCell {
     }
 
     func configureWith(_ cart: Cart) {
+        if(cart.isNew || cart.updated) {
+            labelProductName.textColor = UIColor(rgb: 0xF93C64)
+        }
         labelProductName.text = "\(cart.name)"
         labelCount.text = "Số lượng: \(cart.quantity)"
         labelPrice.text = addCommaNumber(string: forTrailingZero(temp: cart.price))

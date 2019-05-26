@@ -266,9 +266,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="G2D-ks-872" kind="show" identifier="showMenuDetail" id="S8h-fo-bgt"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -373,7 +370,7 @@
                                     <color key="titleColor" red="0.97647058819999999" green="0.23529411759999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="pH0-92-d8z" kind="show" id="oVi-gb-s3G"/>
+                                    <segue destination="pH0-92-d8z" kind="show" identifier="showCheckOut" id="oVi-gb-s3G"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -604,7 +601,7 @@
         <!--Check Out View Controller-->
         <scene sceneID="gE0-R9-vUL">
             <objects>
-                <viewController id="pH0-92-d8z" customClass="CheckOutViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="showCheckOut" id="pH0-92-d8z" customClass="CheckOutViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I0H-dN-BfO"/>
                         <viewControllerLayoutGuide type="bottom" id="Mlq-Ae-h9L"/>

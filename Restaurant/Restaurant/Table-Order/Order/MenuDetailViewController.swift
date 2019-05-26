@@ -43,14 +43,15 @@ class MenuDetailViewController: UITableViewController {
                     if let responseValue = response.result.value as! [String: Any]? {
                         if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                             for item in responseOrder {
-                                self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false))
+                                self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false, isNew: false))
                             }
-                            let newCart = Cart(id: self.menu.productId, name: self.txtProductName.text!, quantity: Int(self.labelCount.text!)!, price: self.menu.price, updated: false)
+                            let newCart = Cart(id: self.menu.productId, name: self.txtProductName.text!, quantity: Int(self.labelCount.text!)!, price: self.menu.price, updated: false, isNew: true)
                             if let oldCartIndex = self.cart.firstIndex(where: { $0.id == newCart.id }) {
                                 var cart = self.cart[oldCartIndex]
                                 cart.quantity += Int(self.labelCount.text!)!
                                 self.countItemCart += Int(self.labelCount.text!)!
                                 cart.updated = true
+                                cart.isNew = false
                                 self.cart[oldCartIndex] = cart
                                 
                             } else {
@@ -67,11 +68,12 @@ class MenuDetailViewController: UITableViewController {
                             }
                             alertController.addAction(okAction)
                             self.present(alertController, animated: true, completion: nil)
+                            UserDefaults.standard.set(true, forKey: "flagAddCart")
                         }
                     }
                 }
             } else {
-                let newCart = Cart(id: menu.productId, name: txtProductName.text!, quantity: Int(labelCount.text!)!, price: menu.price, updated: false)
+            let newCart = Cart(id: menu.productId, name: txtProductName.text!, quantity: Int(labelCount.text!)!, price: menu.price, updated: false, isNew: false)
                 if let oldCartIndex = self.cart.firstIndex(where: { $0.name == newCart.name }) {
                     var cart = self.cart[oldCartIndex]
                     cart.quantity += Int(labelCount.text!)!

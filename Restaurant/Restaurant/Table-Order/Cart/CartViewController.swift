@@ -22,6 +22,7 @@ class CartViewController: UIViewController {
     @IBOutlet var buttonplaceOrder: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var labelDesk: UILabel!
+    @IBOutlet var labelButtonCheckOut: UIButton!
     
     
     let cellId = "CartCell"
@@ -39,20 +40,18 @@ class CartViewController: UIViewController {
         controller.countItemCart = self.countItemCart
         self.navigationController!.popToViewController(controller, animated: true)
     }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         customButtonPlaceOrder()
         labelDesk.text = desk.deskName
         getFoodByDesk(deskId: desk.deskId)
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        print(cart)
         
     }
     
@@ -72,36 +71,40 @@ class CartViewController: UIViewController {
     
     @objc func placeOrder() {
         let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
-        let parameters = [
-            "INHOADON": false,
-            "MaBan": desk.deskId,
-            "GIOVAO": "\(time.hour):\(minute)",
-            "GIORA": "",
-            "KETTHUC": false,
-            "TRANGTHAI": "Sử dụng",
-            "MaNhanVienBan": "Nguyễn Xuân An",
-            "HostName": "NXAN",
-            "MaGiam": 0,
-            "Huy": 0,
-            "TongMon": countItemCart
-            ] as Dictionary<String, Any>
-        print(parameters)
-        var request = URLRequest(url: URL(string: URL_ORDER)!)
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            print(response!)
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                print(json)
-                self.checkDeskEnable(deskId: self.desk.deskId)
-            } catch {
-                print("error")
-            }
-        })
-        task.resume()
+        if(!desk.enable) {
+            let parameters = [
+                "INHOADON": false,
+                "MaBan": desk.deskId,
+                "GIOVAO": "\(time.hour):\(minute)",
+                "GIORA": "",
+                "KETTHUC": false,
+                "TRANGTHAI": "Sử dụng",
+                "MaNhanVienBan": "Nguyễn Xuân An",
+                "HostName": "NXAN",
+                "MaGiam": 0,
+                "Huy": 0,
+                "TongMon": countItemCart
+                ] as Dictionary<String, Any>
+            print(parameters)
+            var request = URLRequest(url: URL(string: URL_ORDER)!)
+            request.httpMethod = "POST"
+            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                print(response!)
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                    print(json)
+                    self.checkDeskEnable(deskId: self.desk.deskId)
+                } catch {
+                    print("error")
+                }
+            })
+            task.resume()
+        } else {
+            self.checkDeskEnable(deskId: self.desk.deskId)
+        }
     }
     
     func checkDeskEnable(deskId: Int) {
@@ -112,23 +115,32 @@ class CartViewController: UIViewController {
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                         for item in responseOrder {
                             orderId = item["SOHOADON"] as! String
+                        }
+                        if(!self.desk.enable) {
                             self.saveFood(orderId: orderId)
                             self.updateDeskHasPeople(deskId: deskId)
+                            self.alertAddToCart(title: "Thông báo", message: "Đã đặt món thành công")
+                            self.navigationController!.popViewController(animated: true)
+                        } else {
+                            self.updateFood(orderId: orderId)
+                            self.updateDeskHasPeople(deskId: deskId)
+                            self.updateQuantityFood(orderId: orderId)
+                            self.alertAddToCart(title: "Thông báo", message: "Đã đặt thêm món")
                         }
                     }
                 }
         }
     }
     
-    func saveFood(orderId: String) {
-        for item in cart {
+    func saveOneFood(orderId: String, cart: Cart) {
+        if(!cart.updated && cart.isNew) {
             let parameters = [
                 "SOHOADON": orderId,
-                "MaMon": item.id,
+                "MaMon": cart.id,
                 "SoLuongTra": 0,
-                "SoLuong": item.quantity,
-                "TenMon": item.name,
-                "DonGiaBan": item.price
+                "SoLuong": cart.quantity,
+                "TenMon": cart.name,
+                "DonGiaBan": cart.price
                 ] as Dictionary<String, Any>
             print(parameters)
             var request = URLRequest(url: URL(string: URL_ORDER_DETAIL)!)
@@ -149,9 +161,96 @@ class CartViewController: UIViewController {
         }
     }
     
-    func updateDeskHasPeople(deskId: Int) {
+    func saveFood(orderId: String) {
+        for item in cart {
+            if(!item.updated && item.isNew) {
+                let parameters = [
+                    "SOHOADON": orderId,
+                    "MaMon": item.id,
+                    "SoLuongTra": 0,
+                    "SoLuong": item.quantity,
+                    "TenMon": item.name,
+                    "DonGiaBan": item.price
+                    ] as Dictionary<String, Any>
+                print(parameters)
+                var request = URLRequest(url: URL(string: URL_ORDER_DETAIL)!)
+                request.httpMethod = "POST"
+                request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                let session = URLSession.shared
+                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                    print(response!)
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                        print(json)
+                    } catch {
+                        print("error")
+                    }
+                })
+                task.resume()
+            }
+        }
+    }
+    
+    func updateFood(orderId: String) {
+        for item in cart {
+            if(item.updated && !item.isNew) {
+                let parameters = [
+                    "SOHOADON": orderId,
+                    "MaMon": item.id,
+                    "SoLuong": item.quantity
+                ] as Dictionary<String, Any>
+                print(parameters)
+                var request = URLRequest(url: URL(string: URL_ORDER_DETAIL)!)
+                request.httpMethod = "PUT"
+                request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                let session = URLSession.shared
+                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                    print(response!)
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                        print(json)
+                    } catch {
+                        print("error")
+                    }
+                })
+                task.resume()
+            } else if (!item.updated && item.isNew) {
+                self.saveOneFood(orderId: orderId, cart: item)
+                self.updateQuantityFood(orderId: orderId)
+            }
+        }
+    }
+    
+    func updateQuantityFood(orderId: String) {
         let parameters = [
-            "TongMon": countItemCart
+            "SOHOADON": orderId,
+            "TongMon": countItemCart,
+            ] as Dictionary<String, Any>
+        print(parameters)
+        var request = URLRequest(url: URL(string: URL_ORDER + "updateQuantityFood")!)
+        request.httpMethod = "PUT"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
+    }
+    
+    func updateDeskHasPeople(deskId: Int) {
+        let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
+        let parameters = [
+            "TongMon": countItemCart,
+            "GIOVAO": "\(time.hour):\(minute)"
         ] as Dictionary<String, Any>
         print(parameters)
         var request = URLRequest(url: URL(string: URL_DESK + "updateDeskHasPeople/" + "\(deskId)")!)
@@ -180,7 +279,7 @@ class CartViewController: UIViewController {
                     if let responseValue = response.result.value as! [String: Any]? {
                         if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                                 for item in responseOrder {
-                                    self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false))
+                                    self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false, isNew: false))
                                     self.tableView.reloadData()
                                 }
                         }
@@ -189,6 +288,24 @@ class CartViewController: UIViewController {
         }
     }
     
+    func alertAddToCart(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {
+            UIAlertAction in
+            let controller = self.navigationController!.viewControllers[0] as! DeskViewController
+            self.navigationController!.popToViewController(controller, animated: true)
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCheckOut" {
+            let viewController = segue.destination as? CheckOutViewController
+            viewController!.desk = desk
+        }
+    }
     
 }
 

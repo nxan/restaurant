@@ -61,6 +61,8 @@ class DeskViewController: UIViewController {
             if (segmentIndex == 2) { self.generateFloor(floor: 3) }
             if (segmentIndex == 3) { self.generateFloor(floor: 4) }
         }
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

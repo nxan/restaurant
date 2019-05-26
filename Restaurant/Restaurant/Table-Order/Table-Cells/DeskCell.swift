@@ -33,8 +33,7 @@ class DeskCell: UICollectionViewCell {
         labelCountOrder.text = "Số món gọi: \(desk.quantity)"
         if(desk.enable) {
             labelStatus.text = "Trạng thái: Đã có người"
-            let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
-            labelTime.text = "Thời gian vào: \(time.hour):\(minute)"
+            labelTime.text = "Thời gian vào: " + desk.timeOn
             labelStatus.textColor = UIColor.vegaGreen
         } else {
             labelStatus.text = "Trạng thái: Trống"

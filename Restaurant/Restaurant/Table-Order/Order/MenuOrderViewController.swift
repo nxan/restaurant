@@ -41,6 +41,7 @@ class MenuOrderViewController: UIViewController {
     var countItemCart: Int = 0
     var flag = false
     var flagRemove = false
+    var flagAdded = ""
     
     
     var defaultAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.black]
@@ -78,8 +79,6 @@ class MenuOrderViewController: UIViewController {
             self.tableView.reloadData()
         }
         self.buttonBasket.badgeString = String(self.countItemCart)
-        
-        print(cart)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,7 +88,12 @@ class MenuOrderViewController: UIViewController {
     }
     
     @IBAction func addToCart(_ sender: Any) {
-        
+        if !desk.enable && cart.count == 0 {
+            let alertController = UIAlertController(title: "Thông báo", message: "Giỏ hàng trống. Vui lòng thêm sản phẩm", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     
@@ -178,26 +182,29 @@ extension MenuOrderViewController: UITableViewDelegate, UITableViewDataSource, U
                             if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                                 if(!self.flag) {
                                     for item in responseOrder {
-                                        self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false))
+                                        self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false, isNew: false))
                                     }
                                     self.flag = true
                                 }
-                                let newCart = Cart(id: self.filterMenu[indexPath.row].productId, name: self.filterMenu[indexPath.row].name, quantity: 1, price: self.filterMenu[indexPath.row].price, updated: false)
+                                let newCart = Cart(id: self.filterMenu[indexPath.row].productId, name: self.filterMenu[indexPath.row].name, quantity: 1, price: self.filterMenu[indexPath.row].price, updated: false, isNew: true)
                                 if let oldCartIndex = self.cart.firstIndex(where: { $0.id == newCart.id }) {
                                     var cartIndex = self.cart[oldCartIndex]
                                     cartIndex.quantity += 1
-                                    cartIndex.updated = true
+                                    if(cartIndex.name != self.flagAdded) {
+                                        cartIndex.updated = true
+                                        cartIndex.isNew = false
+                                    }
                                     self.cart[oldCartIndex] = cartIndex
-                                    
                                 } else {
                                     self.cart.append(newCart)
+                                    self.flagAdded = newCart.name
                                 }
                                 self.flagUpdated = true
                             }
                         }
                 }
             } else {
-                let newCart = Cart(id: self.filterMenu[indexPath.row].productId, name: self.filterMenu[indexPath.row].name, quantity: 1, price: self.filterMenu[indexPath.row].price, updated: false)
+                let newCart = Cart(id: self.filterMenu[indexPath.row].productId, name: self.filterMenu[indexPath.row].name, quantity: 1, price: self.filterMenu[indexPath.row].price, updated: false, isNew: true)
                 if let oldCartIndex = self.cart.firstIndex(where: { $0.id == newCart.id }) {
                     var cart = self.cart[oldCartIndex]
                     cart.quantity += 1
@@ -216,7 +223,7 @@ extension MenuOrderViewController: UITableViewDelegate, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showMenuDetail", sender: indexPath)
+        //performSegue(withIdentifier: "showMenuDetail", sender: indexPath)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

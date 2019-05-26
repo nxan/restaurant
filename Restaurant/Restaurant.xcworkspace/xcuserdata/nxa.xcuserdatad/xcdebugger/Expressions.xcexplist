@@ -3,6 +3,22 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "static DeskHelper.generateFloor1():DeskHelper.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "desksJSON">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CartViewController.saveFood(orderId:):CartViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cart">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CartCell.configureWith(_:):CartCell.swift">
          <PersistentStrings>
             <PersistentString
@@ -10,17 +26,6 @@
             </PersistentString>
             <PersistentString
                value = "cart.name">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #1 in MenuOrderViewController.tableView(_:cellForRowAt:):MenuOrderViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cart">
-            </PersistentString>
-            <PersistentString
-               value = "self.cart[oldCartIndex]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -36,89 +41,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "DeskViewController.collectionView(_:didSelectItemAt:):DeskViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "controller.labelDesk.text">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MenuOrderViewController.viewDidLoad():MenuOrderViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "menu.count">
-            </PersistentString>
-            <PersistentString
-               value = "desk">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in MenuOrderViewController.viewWillAppear(_:):MenuOrderViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "menu">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CartViewController.tableView(_:cellForRowAt:):CartViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cart">
-            </PersistentString>
-            <PersistentString
-               value = "cart.count">
-            </PersistentString>
-            <PersistentString
-               value = "cart[indexPath.row].price">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MenuCell.configureWith(_:):MenuCell.swift">
-      </ContextState>
-      <ContextState
-         contextName = "static DeskHelper.generateFloor1():DeskHelper.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "desksJSON">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "closure #1 in DeskViewController.generateFloor1():DeskViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "desks">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DeskViewController.fetchDesk():DeskViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "response">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CartViewController.viewDidLoad():CartViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cart">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MenuContainerViewController.prepare(for:sender:):MenuContainerViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "productName">
-            </PersistentString>
-            <PersistentString
-               value = "viewController.productName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -137,6 +63,25 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DeskViewController.collectionView(_:didSelectItemAt:):DeskViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "controller.labelDesk.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CartViewController.updateFood(orderId:):CartViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "item.updated">
+            </PersistentString>
+            <PersistentString
+               value = "cart">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MenuOrderViewController.prepare(for:sender:):MenuOrderViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -147,6 +92,105 @@
             </PersistentString>
             <PersistentString
                value = "segue.identifier">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CheckOutViewController.viewDidLoad():CheckOutViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "desk.deskId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CheckOutViewController.tableView(_:cellForRowAt:):CheckOutViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cart">
+            </PersistentString>
+            <PersistentString
+               value = "cart[indexPath.row]">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in MenuOrderViewController.viewWillAppear(_:):MenuOrderViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "menu">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MenuCell.configureWith(_:):MenuCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CartViewController.tableView(_:cellForRowAt:):CartViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cart">
+            </PersistentString>
+            <PersistentString
+               value = "cart.count">
+            </PersistentString>
+            <PersistentString
+               value = "cart[indexPath.row].price">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in CartViewController.checkDeskEnable(deskId:):CartViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DeskViewController.fetchDesk():DeskViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CartViewController.viewDidLoad():CartViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cart">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MenuOrderViewController.viewDidLoad():MenuOrderViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "menu.count">
+            </PersistentString>
+            <PersistentString
+               value = "desk">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in MenuOrderViewController.tableView(_:cellForRowAt:):MenuOrderViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "cart">
+            </PersistentString>
+            <PersistentString
+               value = "self.cart[oldCartIndex]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MenuContainerViewController.prepare(for:sender:):MenuContainerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "productName">
+            </PersistentString>
+            <PersistentString
+               value = "viewController.productName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
