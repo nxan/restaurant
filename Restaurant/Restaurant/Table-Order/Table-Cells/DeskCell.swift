@@ -32,7 +32,7 @@ class DeskCell: UICollectionViewCell {
         labelDeskId.text = "Số bàn: \(desk.deskName)"
         labelCountOrder.text = "Số món gọi: \(desk.quantity)"
         if(desk.enable) {
-            labelStatus.text = "Trạng thái: Đã có người"
+            labelStatus.text = "Trạng thái: Có khách"
             labelTime.text = "Thời gian vào: " + desk.timeOn
             labelStatus.textColor = UIColor.vegaGreen
         } else {

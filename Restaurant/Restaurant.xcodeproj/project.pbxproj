@@ -8,6 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		762C81BF3D381973609D2D12 /* Pods_Restaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE9A0772E1D0F6C72F1D3F3 /* Pods_Restaurant.framework */; };
+		EF0E01A322AB2E7D0073E27E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01A222AB2E7D0073E27E /* SettingViewController.swift */; };
+		EF0E01A622AB30280073E27E /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01A422AB30280073E27E /* SettingTableViewCell.swift */; };
+		EF0E01A722AB30280073E27E /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0E01A522AB30280073E27E /* SettingTableViewCell.xib */; };
+		EF0E01AA22AB4AA20073E27E /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01A922AB4AA20073E27E /* PlaceViewController.swift */; };
+		EF0E01AD22AB4F3E0073E27E /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01AB22AB4F3E0073E27E /* PlaceTableViewCell.swift */; };
+		EF0E01AE22AB4F3E0073E27E /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0E01AC22AB4F3E0073E27E /* PlaceTableViewCell.xib */; };
+		EF0E01B022AB50A10073E27E /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01AF22AB50A10073E27E /* Place.swift */; };
+		EF0E01B222AB51FF0073E27E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01B122AB51FF0073E27E /* Server.swift */; };
+		EF0E01B622AC82D00073E27E /* GroupFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01B422AC82D00073E27E /* GroupFoodTableViewCell.swift */; };
+		EF0E01B722AC82D00073E27E /* GroupFoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0E01B522AC82D00073E27E /* GroupFoodTableViewCell.xib */; };
+		EF0E01B922AC82DF0073E27E /* GroupFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01B822AC82DF0073E27E /* GroupFoodViewController.swift */; };
+		EF0E01BB22AC82EC0073E27E /* GroupFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01BA22AC82EC0073E27E /* GroupFood.swift */; };
+		EF0E01C022AC9E520073E27E /* DeskSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01BF22AC9E520073E27E /* DeskSettingViewController.swift */; };
+		EF0E01C522ACA2060073E27E /* DeskSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01C322ACA2060073E27E /* DeskSettingTableViewCell.swift */; };
+		EF0E01C622ACA2060073E27E /* DeskSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0E01C422ACA2060073E27E /* DeskSettingTableViewCell.xib */; };
+		EF0E01C822ACA3430073E27E /* DeskSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01C722ACA3430073E27E /* DeskSetting.swift */; };
+		EF48EE5922ACAAAE000BB687 /* AddNewDeskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48EE5822ACAAAE000BB687 /* AddNewDeskViewController.swift */; };
 		EF68188322802EF600DDA714 /* CartTableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68188122802EF600DDA714 /* CartTableSectionHeader.swift */; };
 		EF68188422802EF600DDA714 /* CartTableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF68188222802EF600DDA714 /* CartTableSectionHeader.xib */; };
 		EF681886228161B900DDA714 /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF681885228161B900DDA714 /* MenuDetailViewController.swift */; };
@@ -42,6 +59,23 @@
 		1FE9A0772E1D0F6C72F1D3F3 /* Pods_Restaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD55A60B787AC1919418DD98 /* Pods-Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant.release.xcconfig"; path = "Target Support Files/Pods-Restaurant/Pods-Restaurant.release.xcconfig"; sourceTree = "<group>"; };
 		E3866BAE48BFF4D21354E065 /* Pods-Restaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant.debug.xcconfig"; path = "Target Support Files/Pods-Restaurant/Pods-Restaurant.debug.xcconfig"; sourceTree = "<group>"; };
+		EF0E01A222AB2E7D0073E27E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		EF0E01A422AB30280073E27E /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		EF0E01A522AB30280073E27E /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		EF0E01A922AB4AA20073E27E /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		EF0E01AB22AB4F3E0073E27E /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
+		EF0E01AC22AB4F3E0073E27E /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
+		EF0E01AF22AB50A10073E27E /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		EF0E01B122AB51FF0073E27E /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		EF0E01B422AC82D00073E27E /* GroupFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFoodTableViewCell.swift; sourceTree = "<group>"; };
+		EF0E01B522AC82D00073E27E /* GroupFoodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupFoodTableViewCell.xib; sourceTree = "<group>"; };
+		EF0E01B822AC82DF0073E27E /* GroupFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFoodViewController.swift; sourceTree = "<group>"; };
+		EF0E01BA22AC82EC0073E27E /* GroupFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFood.swift; sourceTree = "<group>"; };
+		EF0E01BF22AC9E520073E27E /* DeskSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskSettingViewController.swift; sourceTree = "<group>"; };
+		EF0E01C322ACA2060073E27E /* DeskSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskSettingTableViewCell.swift; sourceTree = "<group>"; };
+		EF0E01C422ACA2060073E27E /* DeskSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeskSettingTableViewCell.xib; sourceTree = "<group>"; };
+		EF0E01C722ACA3430073E27E /* DeskSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskSetting.swift; sourceTree = "<group>"; };
+		EF48EE5822ACAAAE000BB687 /* AddNewDeskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDeskViewController.swift; sourceTree = "<group>"; };
 		EF68188122802EF600DDA714 /* CartTableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableSectionHeader.swift; sourceTree = "<group>"; };
 		EF68188222802EF600DDA714 /* CartTableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartTableSectionHeader.xib; sourceTree = "<group>"; };
 		EF681885228161B900DDA714 /* MenuDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +128,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EF0E01A122AB2E400073E27E /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E01BC22AC8AF60073E27E /* Desk */,
+				EF0E01B322AC82990073E27E /* GroupFood */,
+				EF0E01A822AB4A490073E27E /* Place */,
+				EF0E01A222AB2E7D0073E27E /* SettingViewController.swift */,
+				EF0E01A422AB30280073E27E /* SettingTableViewCell.swift */,
+				EF0E01A522AB30280073E27E /* SettingTableViewCell.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		EF0E01A822AB4A490073E27E /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E01AF22AB50A10073E27E /* Place.swift */,
+				EF0E01AC22AB4F3E0073E27E /* PlaceTableViewCell.xib */,
+				EF0E01AB22AB4F3E0073E27E /* PlaceTableViewCell.swift */,
+				EF0E01A922AB4AA20073E27E /* PlaceViewController.swift */,
+			);
+			path = Place;
+			sourceTree = "<group>";
+		};
+		EF0E01B322AC82990073E27E /* GroupFood */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E01BA22AC82EC0073E27E /* GroupFood.swift */,
+				EF0E01B522AC82D00073E27E /* GroupFoodTableViewCell.xib */,
+				EF0E01B422AC82D00073E27E /* GroupFoodTableViewCell.swift */,
+				EF0E01B822AC82DF0073E27E /* GroupFoodViewController.swift */,
+			);
+			path = GroupFood;
+			sourceTree = "<group>";
+		};
+		EF0E01BC22AC8AF60073E27E /* Desk */ = {
+			isa = PBXGroup;
+			children = (
+				EF0E01C722ACA3430073E27E /* DeskSetting.swift */,
+				EF0E01C422ACA2060073E27E /* DeskSettingTableViewCell.xib */,
+				EF0E01C322ACA2060073E27E /* DeskSettingTableViewCell.swift */,
+				EF0E01BF22AC9E520073E27E /* DeskSettingViewController.swift */,
+				EF48EE5822ACAAAE000BB687 /* AddNewDeskViewController.swift */,
+			);
+			path = Desk;
+			sourceTree = "<group>";
+		};
 		EFB210AA2279ED3C00A62861 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +198,7 @@
 			children = (
 				EFB210DD227AD1DD00A62861 /* Extension */,
 				EFB210CA2279F14900A62861 /* Table-Order */,
+				EF0E01A122AB2E400073E27E /* Setting */,
 				EFB210B62279ED3C00A62861 /* AppDelegate.swift */,
 				EFB210BF2279ED3F00A62861 /* Assets.xcassets */,
 				EFB210D02279F40C00A62861 /* Main.storyboard */,
@@ -167,6 +249,7 @@
 				EFB210E3227AD45B00A62861 /* Date.swift */,
 				EFB782DB227F237A0023A4DF /* UIButton.swift */,
 				EFB210E5227ADB5C00A62861 /* VegaScrollFlowLayout.swift */,
+				EF0E01B122AB51FF0073E27E /* Server.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -267,8 +350,12 @@
 			files = (
 				EFB210D9227ACAE000A62861 /* DeskCell.xib in Resources */,
 				EFB210D12279F40C00A62861 /* Main.storyboard in Resources */,
+				EF0E01AE22AB4F3E0073E27E /* PlaceTableViewCell.xib in Resources */,
+				EF0E01A722AB30280073E27E /* SettingTableViewCell.xib in Resources */,
 				EFF6AF39227DA3AC00380851 /* MenuCell.xib in Resources */,
+				EF0E01B722AC82D00073E27E /* GroupFoodTableViewCell.xib in Resources */,
 				EF68188422802EF600DDA714 /* CartTableSectionHeader.xib in Resources */,
+				EF0E01C622ACA2060073E27E /* DeskSettingTableViewCell.xib in Resources */,
 				EFB782E7227F25CE0023A4DF /* CartCell.xib in Resources */,
 				EFB210C32279ED3F00A62861 /* LaunchScreen.storyboard in Resources */,
 				EFB210C02279ED3F00A62861 /* Assets.xcassets in Resources */,
@@ -341,16 +428,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF0E01AA22AB4AA20073E27E /* PlaceViewController.swift in Sources */,
+				EF0E01C522ACA2060073E27E /* DeskSettingTableViewCell.swift in Sources */,
+				EF0E01B022AB50A10073E27E /* Place.swift in Sources */,
 				EFF6AF3B227EACA300380851 /* MenuHelper.swift in Sources */,
+				EF0E01A322AB2E7D0073E27E /* SettingViewController.swift in Sources */,
 				EFB210E6227ADB5C00A62861 /* VegaScrollFlowLayout.swift in Sources */,
 				EFB782DA227F170A0023A4DF /* CartViewController.swift in Sources */,
 				EFC1038022895F11000CE584 /* CheckOutViewController.swift in Sources */,
+				EF0E01B222AB51FF0073E27E /* Server.swift in Sources */,
+				EF0E01A622AB30280073E27E /* SettingTableViewCell.swift in Sources */,
 				EF68188822816DD900DDA714 /* MenuContainerViewController.swift in Sources */,
+				EF0E01B922AC82DF0073E27E /* GroupFoodViewController.swift in Sources */,
 				EFB782E9227F27D70023A4DF /* CartHelper.swift in Sources */,
+				EF0E01B622AC82D00073E27E /* GroupFoodTableViewCell.swift in Sources */,
+				EF0E01AD22AB4F3E0073E27E /* PlaceTableViewCell.swift in Sources */,
 				EFB210D8227ACAE000A62861 /* DeskCell.swift in Sources */,
 				EFF6AF33227D91C700380851 /* MenuOrderViewController.swift in Sources */,
 				EFB782DC227F237A0023A4DF /* UIButton.swift in Sources */,
+				EF0E01C022AC9E520073E27E /* DeskSettingViewController.swift in Sources */,
 				EFB210DF227AD1FD00A62861 /* UIColor.swift in Sources */,
+				EF0E01C822ACA3430073E27E /* DeskSetting.swift in Sources */,
 				EFB210DC227ACFD200A62861 /* Desk.swift in Sources */,
 				EFF6AF38227DA3AC00380851 /* MenuCell.swift in Sources */,
 				EFB210E4227AD45B00A62861 /* Date.swift in Sources */,
@@ -358,7 +456,9 @@
 				EFF6AF3D227EACBF00380851 /* Menu.swift in Sources */,
 				EFB210E1227AD21700A62861 /* DeskHelper.swift in Sources */,
 				EFB210B72279ED3C00A62861 /* AppDelegate.swift in Sources */,
+				EF0E01BB22AC82EC0073E27E /* GroupFood.swift in Sources */,
 				EF681886228161B900DDA714 /* MenuDetailViewController.swift in Sources */,
+				EF48EE5922ACAAAE000BB687 /* AddNewDeskViewController.swift in Sources */,
 				EF68188322802EF600DDA714 /* CartTableSectionHeader.swift in Sources */,
 				EFB210B92279ED3C00A62861 /* DeskViewController.swift in Sources */,
 				EFB782DE227F25050023A4DF /* Cart.swift in Sources */,
@@ -503,6 +603,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6DNR25453;
 				INFOPLIST_FILE = Restaurant/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,6 +623,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V6DNR25453;
 				INFOPLIST_FILE = Restaurant/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

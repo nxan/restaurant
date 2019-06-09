@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,28 +31,31 @@
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziC-24-lqG">
-                        <rect key="frame" x="359" y="25" width="35" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziC-24-lqG">
+                        <rect key="frame" x="365" y="25" width="35" height="34.5"/>
                         <state key="normal" title="Button" image="add"/>
                         <connections>
                             <action selector="buttonAddOrder:" destination="IUf-H7-ZM0" eventType="touchUpInside" id="oYN-kg-YVh"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoe-Po-EXn">
-                        <rect key="frame" x="286" y="34" width="66" height="22"/>
+                        <rect key="frame" x="285" y="34" width="66" height="22"/>
                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="yoe-Po-EXn" secondAttribute="trailing" constant="68" id="0Ve-hf-G3Q"/>
+                    <constraint firstAttribute="trailing" secondItem="yoe-Po-EXn" secondAttribute="trailing" constant="69" id="0Ve-hf-G3Q"/>
                     <constraint firstItem="WM5-vf-tVa" firstAttribute="top" secondItem="vPp-MP-aIv" secondAttribute="topMargin" constant="4" id="6D0-3f-2qW"/>
                     <constraint firstItem="5no-r2-lO4" firstAttribute="leading" secondItem="vPp-MP-aIv" secondAttribute="leadingMargin" constant="5" id="FIs-1k-Pcj"/>
                     <constraint firstItem="yoe-Po-EXn" firstAttribute="top" secondItem="WM5-vf-tVa" secondAttribute="bottom" constant="-1.5" id="PYu-x0-OPX"/>
                     <constraint firstItem="WM5-vf-tVa" firstAttribute="leading" secondItem="vPp-MP-aIv" secondAttribute="leadingMargin" constant="5" id="Xoy-DR-as4"/>
+                    <constraint firstItem="ziC-24-lqG" firstAttribute="top" secondItem="vPp-MP-aIv" secondAttribute="topMargin" constant="14" id="byA-cX-pad"/>
                     <constraint firstItem="5no-r2-lO4" firstAttribute="top" secondItem="WM5-vf-tVa" secondAttribute="bottom" constant="20" id="jdt-Nr-SIH"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ziC-24-lqG" secondAttribute="trailing" id="kOl-px-KNB"/>
+                    <constraint firstItem="ziC-24-lqG" firstAttribute="leading" secondItem="yoe-Po-EXn" secondAttribute="trailing" constant="14" id="sVL-u8-SX1"/>
+                    <constraint firstItem="ziC-24-lqG" firstAttribute="centerY" secondItem="vPp-MP-aIv" secondAttribute="centerY" id="woX-fR-NsZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="f1d-yM-RrT"/>

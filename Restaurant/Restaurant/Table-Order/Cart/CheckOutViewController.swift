@@ -13,11 +13,11 @@ class CheckOutViewController: UIViewController {
     
     let URL_ORDER_DETAIL = "http://localhost:8888/orderdetail/"
     let URL_ORDER = "http://localhost:8888/order/"
-    let URL_DESK = "http://localhost:8888/desks/"
+    let URL_DESK = "http://localhost:8888/desk/"
 
     private let buttonFont = UIFont.boldSystemFont(ofSize: 20)
     private let backgroundColor: UIColor = .white
-    private let tintColor = UIColor(rgb: 0xff5a66)
+    private let tintColor = UIColor(rgb: 0xff5a66)    
     
     @IBOutlet var buttonplaceOrder: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -164,7 +164,7 @@ class CheckOutViewController: UIViewController {
             }
         })
         task.resume()
-    }
+    }        
     
     func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -226,18 +226,7 @@ extension CheckOutViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-            if(indexPath.section == 0) {
-                cart.remove(at: indexPath.row)
-                let tempIndexPath = IndexPath(row: indexPath.row, section: 0)
-                tableView.deleteRows(at: [tempIndexPath], with: .fade)
-            }
-            tableView.reloadData()
-        }
-    }
+    }        
     
     func forTrailingZero(temp: Double) -> String {
         let tempVar = String(format: "%g", temp)

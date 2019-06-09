@@ -11,14 +11,14 @@ import JNSegmentedControl
 import Alamofire
 
 
-private let itemHeight: CGFloat = 84
+private let itemHeight: CGFloat = 87
 private let lineSpacing: CGFloat = 20
 private let xInset: CGFloat = 20
 private let topInset: CGFloat = 10
 
 class DeskViewController: UIViewController {
     
-    let URL_DESK = "http://localhost:8888/desks/"
+    let URL_DESK = "http://localhost:8888/desk/"
     let URL_PLACE = "http://localhost:8888/place/"
     let URL_ORDER = "http://localhost:8888/order/"
     
@@ -42,6 +42,7 @@ class DeskViewController: UIViewController {
         super.viewDidLoad()
         generatePlace()
         generateFloor(floor: 1)
+    
         
     }
     
@@ -61,8 +62,6 @@ class DeskViewController: UIViewController {
             if (segmentIndex == 2) { self.generateFloor(floor: 3) }
             if (segmentIndex == 3) { self.generateFloor(floor: 4) }
         }
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -20,8 +20,7 @@ class MenuOrderViewController: UIViewController {
     @IBOutlet var labelDesk: UILabel!
     @IBOutlet weak var labelTime: UILabel!
     
-    
-    let URL_GROUP_FOOD = "http://localhost:8888/group_food/"
+    let URL_GROUP_FOOD = "http://localhost:8888/groupfood/"
     let URL_FOOD = "http://localhost:8888/food/"
     let URL_ORDER = "http://localhost:8888/order/"
     let URL_ORDER_DETAIL = "http://localhost:8888/orderdetail/"
@@ -55,7 +54,8 @@ class MenuOrderViewController: UIViewController {
         searchBar.delegate = self
         
         let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
-        labelTime.text = "\(time.hour):\(minute)"
+        let hour = (time.hour < 10) ? "0\(time.hour)" : "\(time.hour)"
+        labelTime.text = "\(hour):\(minute)"
         labelDesk.text = desk.deskName
         
         countItemCart = desk.quantity

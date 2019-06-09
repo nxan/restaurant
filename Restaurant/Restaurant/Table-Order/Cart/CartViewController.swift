@@ -13,7 +13,7 @@ class CartViewController: UIViewController {
     
     let URL_ORDER = "http://localhost:8888/order/"
     let URL_ORDER_DETAIL = "http://localhost:8888/orderdetail/"
-    let URL_DESK = "http://localhost:8888/desks/"
+    let URL_DESK = "http://localhost:8888/desk/"
     
     private let buttonFont = UIFont.boldSystemFont(ofSize: 20)
     private let backgroundColor: UIColor = .white
@@ -22,8 +22,7 @@ class CartViewController: UIViewController {
     @IBOutlet var buttonplaceOrder: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var labelDesk: UILabel!
-    @IBOutlet var labelButtonCheckOut: UIButton!
-    
+    @IBOutlet var labelButtonPay: UIButton!
     
     let cellId = "CartCell"
     var cart: [Cart] = []
@@ -33,6 +32,8 @@ class CartViewController: UIViewController {
     var desk: Desk!
     var time = Date()
     var flagUpdated = false
+    var flagDelete = false
+    var foodId = 0
     
     @IBAction func buttonBack(_ sender: Any) {
         let controller = self.navigationController!.viewControllers[1] as! MenuOrderViewController
@@ -46,13 +47,11 @@ class CartViewController: UIViewController {
         labelDesk.text = desk.deskName
         getFoodByDesk(deskId: desk.deskId)
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -116,16 +115,23 @@ class CartViewController: UIViewController {
                         for item in responseOrder {
                             orderId = item["SOHOADON"] as! String
                         }
-                        if(!self.desk.enable) {
-                            self.saveFood(orderId: orderId)
-                            self.updateDeskHasPeople(deskId: deskId)
-                            self.alertAddToCart(title: "Thông báo", message: "Đã đặt món thành công")
-                            self.navigationController!.popViewController(animated: true)
-                        } else {
-                            self.updateFood(orderId: orderId)
-                            self.updateDeskHasPeople(deskId: deskId)
+                        if(self.flagDelete) {
+                            self.removeItemOrder(orderId: orderId, foodId: self.foodId)
                             self.updateQuantityFood(orderId: orderId)
-                            self.alertAddToCart(title: "Thông báo", message: "Đã đặt thêm món")
+                            self.updateDeskQuantityFood(deskId: deskId)
+                            self.flagDelete = false
+                        } else {
+                            if(!self.desk.enable) {
+                                self.saveFood(orderId: orderId)
+                                self.updateDeskHasPeople(deskId: deskId)
+                                self.alertAddToCart(title: "Thông báo", message: "Đã đặt món thành công")
+                                self.navigationController!.popViewController(animated: true)
+                            } else {
+                                self.updateFood(orderId: orderId)
+                                self.updateDeskHasPeople(deskId: deskId)
+                                self.updateQuantityFood(orderId: orderId)
+                                self.alertAddToCart(title: "Thông báo", message: "Đã cập nhật món thành công")
+                            }
                         }
                     }
                 }
@@ -270,6 +276,28 @@ class CartViewController: UIViewController {
         task.resume()
     }
     
+    func updateDeskQuantityFood(deskId: Int) {
+        let parameters = [
+            "TongMon": countItemCart,
+            ] as Dictionary<String, Any>
+        print(parameters)
+        var request = URLRequest(url: URL(string: URL_DESK + "updateQuantityFood/" + "\(deskId)")!)
+        request.httpMethod = "PUT"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
+    }
+    
     func getFoodByDesk(deskId: Int) {
         if(desk.enable && !flagUpdated) {
             cart.removeAll()
@@ -288,6 +316,23 @@ class CartViewController: UIViewController {
         }
     }
     
+    func removeItemOrder(orderId: String, foodId: Int) {
+        var request = URLRequest(url: URL(string: URL_ORDER_DETAIL + "\(orderId)" + "/\(foodId)")!)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
+    }
+    
     func alertAddToCart(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {
@@ -297,13 +342,23 @@ class CartViewController: UIViewController {
         }
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
-
+    }
+    
+    func alert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showCheckOut" {
-            let viewController = segue.destination as? CheckOutViewController
-            viewController!.desk = desk
+            if(!desk.enable) {
+                alert(title: "Thông báo", message: "Không có đơn hàng để thanh toán")
+            } else {
+                let viewController = segue.destination as? CheckOutViewController
+                viewController!.desk = desk
+            }
         }
     }
     
@@ -346,7 +401,16 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            if(indexPath.section == 0) {
+            if(desk.enable) {
+                foodId = cart[indexPath.row].id
+                flagDelete = true
+                countItemCart -= cart[indexPath.row].quantity
+                checkDeskEnable(deskId: desk.deskId)
+                cart.remove(at: indexPath.row)
+                let tempIndexPath = IndexPath(row: indexPath.row, section: 0)
+                tableView.deleteRows(at: [tempIndexPath], with: .fade)
+                alert(title: "Thông báo", message: "Đã xóa thành công")
+            } else if (indexPath.section == 0 && !desk.enable) {
                 countItemCart -= cart[indexPath.row].quantity
                 cart.remove(at: indexPath.row)
                 let tempIndexPath = IndexPath(row: indexPath.row, section: 0)
