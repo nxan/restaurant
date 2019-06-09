@@ -25,5 +25,3 @@ struct Desk  {
         self.timeOn = timeOn
     }
 }
-
-

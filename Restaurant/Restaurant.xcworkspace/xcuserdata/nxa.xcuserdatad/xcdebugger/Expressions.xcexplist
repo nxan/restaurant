@@ -82,6 +82,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "DeskViewController.collectionView(_:didSelectItemAt:):DeskViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "controller.labelDesk.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CartViewController.updateFood(orderId:):CartViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -89,14 +97,6 @@
             </PersistentString>
             <PersistentString
                value = "cart">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "DeskViewController.collectionView(_:didSelectItemAt:):DeskViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "controller.labelDesk.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -111,6 +111,14 @@
             </PersistentString>
             <PersistentString
                value = "segue.identifier">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AddNewFoodViewController.btnAddNew(_:):AddNewFoodViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "foodId">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

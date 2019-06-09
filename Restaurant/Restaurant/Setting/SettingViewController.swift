@@ -67,6 +67,12 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 let nextViewController = storyBoard.instantiateViewController(withIdentifier: "GROUPFOOD") as! GroupFoodViewController
                 self.navigationController?.pushViewController(nextViewController, animated:true)
                 break
+                
+            case 4:
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "FOOD") as! FoodViewController
+                self.navigationController?.pushViewController(nextViewController, animated:true)
+                break
             
             default:
                 break

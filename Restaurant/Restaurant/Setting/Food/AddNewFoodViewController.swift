@@ -1,5 +1,5 @@
 //
-//  AddNewDeskViewController.swift
+//  AddNewFoodViewController.swift
 //  Restaurant
 //
 //  Created by NXA on 6/9/19.
@@ -9,63 +9,70 @@
 import UIKit
 import Alamofire
 
-class AddNewDeskViewController: UITableViewController {
+class AddNewFoodViewController: UITableViewController {
     
     let url = Server.init().url
-    lazy var URL_DESK = url + "desk"
-    lazy var URL_PLACE = url + "place"
-    var place: [Place] = []
+    lazy var URL_FOOD = url + "food"
+    lazy var URL_GROUP = url + "groupfood"
+    var group: [GroupFood] = []
     var selectItem: String?
-    var desk: DeskSetting!
+    var food: Food!
     var isUpdate = false
     
-    @IBOutlet weak var txtDeskName: UITextField!
-    @IBOutlet weak var txtPlace: UITextField!
+    @IBOutlet weak var txtFoodName: UITextField!
+    @IBOutlet weak var txtGroupName: UITextField!
+    @IBOutlet weak var txtQuantity: UITextField!
+    @IBOutlet weak var txtUnit: UITextField!
     @IBOutlet weak var labelButtonAdd: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        findAllPlace()
-        place.insert(Place(placeId: 0, placeName: ""), at: 0)
+        findAllGroup()
+        group.insert(GroupFood(groupFoodId: 0, groupFoodName: ""), at: 0)
         createPickerViewType()
         createToolbarPickerView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if(isUpdate) {
-            txtDeskName.text = desk.deskName
-            txtPlace.text = desk.place
+            txtFoodName.text = food.foodName
+            txtGroupName.text = food.groupName
+            txtQuantity.text = "\(food.quantity)"
+            txtUnit.text = addCommaNumber(string: String(food.unit))
             labelButtonAdd.setTitle("Cập nhật", for: .normal)
         }
     }
     
-    @IBAction func btnAdd(_ sender: Any) {
-        if(txtPlace.text != "" && txtDeskName.text != "") {
-            var placeId = 0
-            for item in place {
-                if(item.placeName == txtPlace.text) {
-                    placeId = item.placeId
+    @IBAction func btnAddNew(_ sender: Any) {
+        if(txtGroupName.text != "" && txtFoodName.text != "" && txtUnit.text != "") {
+            var groupId = 0
+            for item in group {
+                if(item.groupFoodName == txtGroupName.text) {
+                    groupId = item.groupFoodId
                 }
             }
             if(isUpdate) {
-                updatePlace(deskId: desk.deskId, deskName: txtDeskName.text!, placeId: placeId)
-                alertAddNew(title: "Thông báo", message: "Cập nhật bàn thành công.")
+                let unit: String = removeCommaNumber(string: txtUnit.text!)!
+                updateFood(foodId: food.foodId ,foodName: txtFoodName.text!, groupId: groupId, quantity: Int(txtQuantity.text!)!, unit: Double(unit)!)
+                alertAddNew(title: "Thông báo", message: "Cập nhật món ăn thành công.")
             } else {
-                createDesk(deskName: txtDeskName.text!, placeId: placeId)
-                alertAddNew(title: "Thông báo", message: "Thêm bàn thành công.")
+                createFood(foodName: txtFoodName.text!, groupId: groupId, quantity: Int(txtQuantity.text!)!, unit: Double(txtUnit.text!)!)
+                alertAddNew(title: "Thông báo", message: "Thêm món ăn thành công.")
             }
         } else {
             alert(title: "Thông báo", message: "Vui lòng điền đầy đủ thông tin.")
         }
     }
     
-    func createDesk(deskName: String, placeId: Int) {
+    func createFood(foodName: String, groupId: Int, quantity: Int, unit: Double) {
         let parameters = [
-            "TenBan": deskName,
-            "Khu" : placeId
+            "TenMon": foodName,
+            "IDNhom" : groupId,
+            "DonVi" : quantity,
+            "DonGiaBan" : unit,
             ] as Dictionary<String, Any>
         print(parameters)
-        var request = URLRequest(url: URL(string: URL_DESK)!)
+        var request = URLRequest(url: URL(string: URL_FOOD)!)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -82,14 +89,16 @@ class AddNewDeskViewController: UITableViewController {
         task.resume()
     }
     
-    func updatePlace(deskId: Int, deskName: String, placeId: Int) {
+    func updateFood(foodId: Int, foodName: String, groupId: Int, quantity: Int, unit: Double) {
         let parameters = [
-            "MaBan": deskId,
-            "TenBan": deskName,
-            "Khu" : placeId
+            "MaMon": foodId,
+            "TenMon": foodName,
+            "IDNhom" : groupId,
+            "DonVi" : quantity,
+            "DonGiaBan" : unit,
             ] as Dictionary<String, Any>
         print(parameters)
-        var request = URLRequest(url: URL(string: URL_DESK)!)
+        var request = URLRequest(url: URL(string: URL_FOOD)!)
         request.httpMethod = "PUT"
         request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -106,13 +115,13 @@ class AddNewDeskViewController: UITableViewController {
         task.resume()
     }
     
-    func findAllPlace() {
-        Alamofire.request(URL_PLACE, method: .get, encoding: JSONEncoding.default).responseJSON
+    func findAllGroup() {
+        Alamofire.request(URL_GROUP, method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in
                 if let responseValue = response.result.value as! [String: Any]? {
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                         for item in responseOrder {
-                            self.place.append(Place(placeId: item["MaKhu"] as! Int, placeName: item["TenKhu"] as! String))
+                            self.group.append(GroupFood(groupFoodId: item["IDNhom"] as! Int, groupFoodName: item["TenNhom"] as! String))
                         }
                     }
                 }
@@ -122,7 +131,7 @@ class AddNewDeskViewController: UITableViewController {
     private func createPickerViewType() {
         let typePicker = UIPickerView()
         typePicker.delegate = self
-        txtPlace.inputView = typePicker
+        txtGroupName.inputView = typePicker
     }
     
     private func createToolbarPickerView() {
@@ -131,7 +140,7 @@ class AddNewDeskViewController: UITableViewController {
         let doneButton = UIBarButtonItem(title: "Xong", style: .plain, target: self, action: #selector(MenuDetailViewController.dismissKeyboard))
         toolbar.setItems([doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
-        txtPlace.inputAccessoryView = toolbar
+        txtGroupName.inputAccessoryView = toolbar
     }
     
     @objc func dismissKeyboard() {
@@ -152,7 +161,7 @@ class AddNewDeskViewController: UITableViewController {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {
                 UIAlertAction in
-                let controller = self.navigationController!.viewControllers[1] as! DeskSettingViewController
+                let controller = self.navigationController!.viewControllers[1] as! FoodViewController
                 self.navigationController!.popToViewController(controller, animated: true)
             }
             alertController.addAction(okAction)
@@ -160,11 +169,21 @@ class AddNewDeskViewController: UITableViewController {
         }
     }
     
+    func addCommaNumber(string: String) -> String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        numberFormatter.groupingSize = 3
+        let formattedNumber = numberFormatter.string(from: NSNumber(value: Double(string)!))
+        return formattedNumber
+    }
     
+    func removeCommaNumber(string: String) -> String? {
+        return string.replacingOccurrences(of: ",", with: "")
+    }
     
 }
 
-extension AddNewDeskViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension AddNewFoodViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -172,24 +191,24 @@ extension AddNewDeskViewController: UIPickerViewDelegate, UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         var item = 0
-        if(txtPlace.isEditing) {
-            item = place.count
+        if(txtGroupName.isEditing) {
+            item = group.count
         }
         return item
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         var item = ""
-        if(txtPlace.isEditing) {
-            item = place[row].placeName
+        if(txtGroupName.isEditing) {
+            item = group[row].groupFoodName
         }
         return item
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if(txtPlace.isEditing) {
-            selectItem = place[row].placeName
-            txtPlace.text = selectItem
+        if(txtGroupName.isEditing) {
+            selectItem = group[row].groupFoodName
+            txtGroupName.text = selectItem
         }
     }
     
