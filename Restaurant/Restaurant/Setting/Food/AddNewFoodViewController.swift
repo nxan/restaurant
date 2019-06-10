@@ -64,6 +64,11 @@ class AddNewFoodViewController: UITableViewController {
         }
     }
     
+    @IBAction func txtUnitEditChanged(_ sender: Any) {
+        txtUnit.text = removeCommaNumber(string: txtUnit.text!)
+    }
+    
+    
     func createFood(foodName: String, groupId: Int, quantity: Int, unit: Double) {
         let parameters = [
             "TenMon": foodName,

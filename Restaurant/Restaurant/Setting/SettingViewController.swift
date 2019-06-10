@@ -73,6 +73,12 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
                 let nextViewController = storyBoard.instantiateViewController(withIdentifier: "FOOD") as! FoodViewController
                 self.navigationController?.pushViewController(nextViewController, animated:true)
                 break
+                
+            case 5:
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ORDER") as! OrderViewController
+                self.navigationController?.pushViewController(nextViewController, animated:true)
+                break
             
             default:
                 break

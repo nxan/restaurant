@@ -52,6 +52,14 @@
 		EFB782E6227F25CE0023A4DF /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB782E4227F25CE0023A4DF /* CartCell.swift */; };
 		EFB782E7227F25CE0023A4DF /* CartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFB782E5227F25CE0023A4DF /* CartCell.xib */; };
 		EFB782E9227F27D70023A4DF /* CartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB782E8227F27D70023A4DF /* CartHelper.swift */; };
+		EFBEC48122ADD3A6000BBC8A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC48022ADD3A6000BBC8A /* Order.swift */; };
+		EFBEC48622ADD981000BBC8A /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC48422ADD981000BBC8A /* OrderTableViewCell.swift */; };
+		EFBEC48722ADD981000BBC8A /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBEC48522ADD981000BBC8A /* OrderTableViewCell.xib */; };
+		EFBEC48922ADDE6C000BBC8A /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC48822ADDE6C000BBC8A /* OrderViewController.swift */; };
+		EFBEC48B22AE01A1000BBC8A /* OrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC48A22AE01A1000BBC8A /* OrderDetail.swift */; };
+		EFBEC48E22AE045A000BBC8A /* OrderDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC48C22AE045A000BBC8A /* OrderDetailTableViewCell.swift */; };
+		EFBEC48F22AE045A000BBC8A /* OrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBEC48D22AE045A000BBC8A /* OrderDetailTableViewCell.xib */; };
+		EFBEC49122AE0554000BBC8A /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49022AE0554000BBC8A /* OrderDetailViewController.swift */; };
 		EFC1038022895F11000CE584 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1037F22895F11000CE584 /* CheckOutViewController.swift */; };
 		EFF6AF33227D91C700380851 /* MenuOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF6AF32227D91C700380851 /* MenuOrderViewController.swift */; };
 		EFF6AF38227DA3AC00380851 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF6AF36227DA3AC00380851 /* MenuCell.swift */; };
@@ -110,6 +118,14 @@
 		EFB782E4227F25CE0023A4DF /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		EFB782E5227F25CE0023A4DF /* CartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartCell.xib; sourceTree = "<group>"; };
 		EFB782E8227F27D70023A4DF /* CartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHelper.swift; sourceTree = "<group>"; };
+		EFBEC48022ADD3A6000BBC8A /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		EFBEC48422ADD981000BBC8A /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		EFBEC48522ADD981000BBC8A /* OrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
+		EFBEC48822ADDE6C000BBC8A /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		EFBEC48A22AE01A1000BBC8A /* OrderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetail.swift; sourceTree = "<group>"; };
+		EFBEC48C22AE045A000BBC8A /* OrderDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailTableViewCell.swift; sourceTree = "<group>"; };
+		EFBEC48D22AE045A000BBC8A /* OrderDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailTableViewCell.xib; sourceTree = "<group>"; };
+		EFBEC49022AE0554000BBC8A /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
 		EFC1037F22895F11000CE584 /* CheckOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
 		EFF6AF32227D91C700380851 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
 		EFF6AF36227DA3AC00380851 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -141,6 +157,7 @@
 		EF0E01A122AB2E400073E27E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				EFBEC47F22ADD37F000BBC8A /* Order */,
 				EF0E01A822AB4A490073E27E /* Place */,
 				EF0E01BC22AC8AF60073E27E /* Desk */,
 				EF0E01B322AC82990073E27E /* GroupFood */,
@@ -302,6 +319,21 @@
 			path = Cart;
 			sourceTree = "<group>";
 		};
+		EFBEC47F22ADD37F000BBC8A /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				EFBEC48022ADD3A6000BBC8A /* Order.swift */,
+				EFBEC48A22AE01A1000BBC8A /* OrderDetail.swift */,
+				EFBEC48422ADD981000BBC8A /* OrderTableViewCell.swift */,
+				EFBEC48522ADD981000BBC8A /* OrderTableViewCell.xib */,
+				EFBEC48C22AE045A000BBC8A /* OrderDetailTableViewCell.swift */,
+				EFBEC48D22AE045A000BBC8A /* OrderDetailTableViewCell.xib */,
+				EFBEC48822ADDE6C000BBC8A /* OrderViewController.swift */,
+				EFBEC49022AE0554000BBC8A /* OrderDetailViewController.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
 		F55F60E559498CAF31866AAC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +408,7 @@
 				EF0E01AE22AB4F3E0073E27E /* PlaceTableViewCell.xib in Resources */,
 				EF0E01A722AB30280073E27E /* SettingTableViewCell.xib in Resources */,
 				EFF6AF39227DA3AC00380851 /* MenuCell.xib in Resources */,
+				EFBEC48F22AE045A000BBC8A /* OrderDetailTableViewCell.xib in Resources */,
 				EF48EE6422ACECFE000BB687 /* FoodTableViewCell.xib in Resources */,
 				EF0E01B722AC82D00073E27E /* GroupFoodTableViewCell.xib in Resources */,
 				EF68188422802EF600DDA714 /* CartTableSectionHeader.xib in Resources */,
@@ -383,6 +416,7 @@
 				EFB782E7227F25CE0023A4DF /* CartCell.xib in Resources */,
 				EFB210C32279ED3F00A62861 /* LaunchScreen.storyboard in Resources */,
 				EFB210C02279ED3F00A62861 /* Assets.xcassets in Resources */,
+				EFBEC48722ADD981000BBC8A /* OrderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,9 +490,12 @@
 				EF48EE6822ACF54E000BB687 /* AddNewFoodViewController.swift in Sources */,
 				EF0E01C522ACA2060073E27E /* DeskSettingTableViewCell.swift in Sources */,
 				EF0E01B022AB50A10073E27E /* Place.swift in Sources */,
+				EFBEC49122AE0554000BBC8A /* OrderDetailViewController.swift in Sources */,
+				EFBEC48922ADDE6C000BBC8A /* OrderViewController.swift in Sources */,
 				EFF6AF3B227EACA300380851 /* MenuHelper.swift in Sources */,
 				EF0E01A322AB2E7D0073E27E /* SettingViewController.swift in Sources */,
 				EFB210E6227ADB5C00A62861 /* VegaScrollFlowLayout.swift in Sources */,
+				EFBEC48E22AE045A000BBC8A /* OrderDetailTableViewCell.swift in Sources */,
 				EFB782DA227F170A0023A4DF /* CartViewController.swift in Sources */,
 				EF48EE6022ACEB40000BB687 /* Food.swift in Sources */,
 				EFC1038022895F11000CE584 /* CheckOutViewController.swift in Sources */,
@@ -472,12 +509,14 @@
 				EF0E01AD22AB4F3E0073E27E /* PlaceTableViewCell.swift in Sources */,
 				EFB210D8227ACAE000A62861 /* DeskCell.swift in Sources */,
 				EF48EE6322ACECFE000BB687 /* FoodTableViewCell.swift in Sources */,
+				EFBEC48B22AE01A1000BBC8A /* OrderDetail.swift in Sources */,
 				EFF6AF33227D91C700380851 /* MenuOrderViewController.swift in Sources */,
 				EFB782DC227F237A0023A4DF /* UIButton.swift in Sources */,
 				EFB210DF227AD1FD00A62861 /* UIColor.swift in Sources */,
 				EF0E01C822ACA3430073E27E /* DeskSetting.swift in Sources */,
 				EFB210DC227ACFD200A62861 /* Desk.swift in Sources */,
 				EFF6AF38227DA3AC00380851 /* MenuCell.swift in Sources */,
+				EFBEC48622ADD981000BBC8A /* OrderTableViewCell.swift in Sources */,
 				EFB210E4227AD45B00A62861 /* Date.swift in Sources */,
 				EFB782E6227F25CE0023A4DF /* CartCell.swift in Sources */,
 				EFF6AF3D227EACBF00380851 /* Menu.swift in Sources */,
@@ -488,6 +527,7 @@
 				EF48EE5922ACAAAE000BB687 /* AddNewDeskViewController.swift in Sources */,
 				EF48EE5B22ACBA19000BB687 /* DeskSettingViewController.swift in Sources */,
 				EF68188322802EF600DDA714 /* CartTableSectionHeader.swift in Sources */,
+				EFBEC48122ADD3A6000BBC8A /* Order.swift in Sources */,
 				EFB210B92279ED3C00A62861 /* DeskViewController.swift in Sources */,
 				EFB782DE227F25050023A4DF /* Cart.swift in Sources */,
 			);
