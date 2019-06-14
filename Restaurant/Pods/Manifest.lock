@@ -1,20 +1,16 @@
 PODS:
   - Alamofire (4.8.2)
   - FoldingCell (5.0.1)
-  - JNSegmentedControl (1.0.2)
+  - JNSegmentedControl (1.0.3)
   - MIBadgeButton-Swift (0.5)
-  - Socket.IO-Client-Swift (13.0.1):
-    - Starscream (~> 3.0.2)
-  - Starscream (3.0.6)
-  - SwiftLint (0.32.0)
-  - SwipeableTabBarController (2.1.0)
+  - SwiftLint (0.33.0)
+  - SwipeableTabBarController (2.1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
   - FoldingCell (~> 5.0)
   - JNSegmentedControl (~> 1.0)
   - MIBadgeButton-Swift (from `https://github.com/mustafaibrahim989/MIBadgeButton-Swift.git`, branch `master`)
-  - Socket.IO-Client-Swift (~> 13.0.0)
   - SwiftLint
   - SwipeableTabBarController
 
@@ -23,8 +19,6 @@ SPEC REPOS:
     - Alamofire
     - FoldingCell
     - JNSegmentedControl
-    - Socket.IO-Client-Swift
-    - Starscream
     - SwiftLint
     - SwipeableTabBarController
 
@@ -41,13 +35,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   FoldingCell: 9197b915a415af9e52a857964066797af6a51c2b
-  JNSegmentedControl: 96681277f475923839ae25f2d53f9f559fea0f38
+  JNSegmentedControl: 119fe147d1852d4801baac635d2e061487ead9f7
   MIBadgeButton-Swift: 9e57309b00b168d75ca8fecb45bc75124a8ffddf
-  Socket.IO-Client-Swift: 7055c89b7a9926b343194c4cac75998329c4a95a
-  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
-  SwipeableTabBarController: e6445066473bb548cc74f660c0ebc04d609cde67
+  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
+  SwipeableTabBarController: 8f7f04275f510c5babb630f7be1161b5f28567e0
 
-PODFILE CHECKSUM: 338795eca7df1d2bc317657b680acd51c3ef3f1b
+PODFILE CHECKSUM: 59eced72dc5961fe455c746de62a9b91a23e07c3
 
 COCOAPODS: 1.6.1

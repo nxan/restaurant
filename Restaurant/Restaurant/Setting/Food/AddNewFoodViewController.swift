@@ -148,7 +148,7 @@ class AddNewFoodViewController: UITableViewController {
         txtGroupName.inputAccessoryView = toolbar
     }
     
-    @objc func dismissKeyboard() {
+    @objc override func dismissKeyboard() {
         view.endEditing(true)
     }
     

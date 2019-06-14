@@ -134,7 +134,7 @@ class AddNewDeskViewController: UITableViewController {
         txtPlace.inputAccessoryView = toolbar
     }
     
-    @objc func dismissKeyboard() {
+    @objc override func dismissKeyboard() {
         view.endEditing(true)
     }
     

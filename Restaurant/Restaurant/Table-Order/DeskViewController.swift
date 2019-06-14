@@ -32,6 +32,7 @@ class DeskViewController: UIViewController {
     var attributedStringItems: [NSAttributedString] = []
     var selectedAttributedStringItems: [NSAttributedString] = []
     var deskPlace = ""
+    var arrayPlace: [Int] = []
     
 
     var defaultAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.black]
@@ -40,28 +41,30 @@ class DeskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        generatePlace()
         generateFloor(floor: 1)
+        if Connectivity.isConnectedToInternet() {
+            print("Yes! internet is available.")
+            // do some tasks..
+        }
+        print(UserDefaults.standard.string(forKey: "key_email")!)
+    }
     
-        
+    class Connectivity {
+        class func isConnectedToInternet() -> Bool {
+            return NetworkReachabilityManager()!.isReachable
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(false, animated: animated)
         
         if let value = UserDefaults.standard.value(forKey: "chooseSegmentedControl") {
             let selectedIndex = value as! Int
             generateFloor(floor: selectedIndex + 1)
-        }
+        }        
+       generatePlace()
         
-        self.segmentedControlView.valueDidChange = { segmentIndex in
-            if (segmentIndex == 0) { self.generateFloor(floor: 1) }
-            if (segmentIndex == 1) { self.generateFloor(floor: 2) }
-            if (segmentIndex == 2) { self.generateFloor(floor: 3) }
-            if (segmentIndex == 3) { self.generateFloor(floor: 4) }
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,9 +74,13 @@ class DeskViewController: UIViewController {
     }
     
     func generatePlace() {
+        self.arrayPlace.removeAll()
+        self.attributedStringItems.removeAll()
+        self.selectedAttributedStringItems.removeAll()
         Alamofire.request(URL_PLACE, method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in
                 if let responseValue = response.result.value as! [String: Any]? {
+                    print(response)
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                         self.textArray = responseOrder
                         for item in self.textArray {
@@ -82,6 +89,10 @@ class DeskViewController: UIViewController {
                             
                             let selectedAttributedString = NSAttributedString(string: item["TenKhu"] as! String, attributes: self.selectedAttributes)
                             self.selectedAttributedStringItems.append(selectedAttributedString)
+                            self.arrayPlace.append(item["MaKhu"] as! Int)
+                            self.segmentedControlView.valueDidChange = { segmentIndex in
+                                self.generateFloor(floor: self.arrayPlace[segmentIndex])
+                            }
                         }
                         self.showSegmentedControlView()
                     }
@@ -100,7 +111,6 @@ class DeskViewController: UIViewController {
                             self.desks.append(Desk(deskId: desk["MaBan"] as! Int, deskName: desk["TenBan"] as! String, enable: (desk["HienThi"]) as! Bool, place: desk["Khu"] as! Int, quantity: desk["TongMon"] as! Int, timeOn: desk["GIOVAO"] as! String))
                         }
                         self.initDeskCollection(desks: self.desks)
-                        self.collectionView.reloadData()
                     }
                 }
             }

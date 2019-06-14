@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		762C81BF3D381973609D2D12 /* Pods_Restaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FE9A0772E1D0F6C72F1D3F3 /* Pods_Restaurant.framework */; };
+		EF0BFD2E22B0FAEB0009CC69 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0BFD2D22B0FAEB0009CC69 /* HomeTabBarController.swift */; };
 		EF0E01A322AB2E7D0073E27E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01A222AB2E7D0073E27E /* SettingViewController.swift */; };
 		EF0E01A622AB30280073E27E /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01A422AB30280073E27E /* SettingTableViewCell.swift */; };
 		EF0E01A722AB30280073E27E /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0E01A522AB30280073E27E /* SettingTableViewCell.xib */; };
@@ -42,7 +43,6 @@
 		EFB210D8227ACAE000A62861 /* DeskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB210D6227ACAE000A62861 /* DeskCell.swift */; };
 		EFB210D9227ACAE000A62861 /* DeskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFB210D7227ACAE000A62861 /* DeskCell.xib */; };
 		EFB210DC227ACFD200A62861 /* Desk.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB210DB227ACFD200A62861 /* Desk.swift */; };
-		EFB210DF227AD1FD00A62861 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB210DE227AD1FD00A62861 /* UIColor.swift */; };
 		EFB210E1227AD21700A62861 /* DeskHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB210E0227AD21700A62861 /* DeskHelper.swift */; };
 		EFB210E4227AD45B00A62861 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB210E3227AD45B00A62861 /* Date.swift */; };
 		EFB210E6227ADB5C00A62861 /* VegaScrollFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB210E5227ADB5C00A62861 /* VegaScrollFlowLayout.swift */; };
@@ -60,6 +60,13 @@
 		EFBEC48E22AE045A000BBC8A /* OrderDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC48C22AE045A000BBC8A /* OrderDetailTableViewCell.swift */; };
 		EFBEC48F22AE045A000BBC8A /* OrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBEC48D22AE045A000BBC8A /* OrderDetailTableViewCell.xib */; };
 		EFBEC49122AE0554000BBC8A /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49022AE0554000BBC8A /* OrderDetailViewController.swift */; };
+		EFBEC49622AE4AE8000BBC8A /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49322AE4AE8000BBC8A /* LoginScreenViewController.swift */; };
+		EFBEC49722AE4AE8000BBC8A /* SignUpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49422AE4AE8000BBC8A /* SignUpScreenViewController.swift */; };
+		EFBEC49822AE4AE8000BBC8A /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49522AE4AE8000BBC8A /* LandingScreenViewController.swift */; };
+		EFBEC49A22AE4B55000BBC8A /* UICustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49922AE4B55000BBC8A /* UICustomTextField.swift */; };
+		EFBEC49C22AE4B67000BBC8A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49B22AE4B67000BBC8A /* UIColor.swift */; };
+		EFBEC49E22AE4C05000BBC8A /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49D22AE4C05000BBC8A /* UITextField.swift */; };
+		EFBEC4A022AE4C24000BBC8A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49F22AE4C24000BBC8A /* UIViewController.swift */; };
 		EFC1038022895F11000CE584 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1037F22895F11000CE584 /* CheckOutViewController.swift */; };
 		EFF6AF33227D91C700380851 /* MenuOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF6AF32227D91C700380851 /* MenuOrderViewController.swift */; };
 		EFF6AF38227DA3AC00380851 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF6AF36227DA3AC00380851 /* MenuCell.swift */; };
@@ -72,6 +79,7 @@
 		1FE9A0772E1D0F6C72F1D3F3 /* Pods_Restaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Restaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD55A60B787AC1919418DD98 /* Pods-Restaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant.release.xcconfig"; path = "Target Support Files/Pods-Restaurant/Pods-Restaurant.release.xcconfig"; sourceTree = "<group>"; };
 		E3866BAE48BFF4D21354E065 /* Pods-Restaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Restaurant.debug.xcconfig"; path = "Target Support Files/Pods-Restaurant/Pods-Restaurant.debug.xcconfig"; sourceTree = "<group>"; };
+		EF0BFD2D22B0FAEB0009CC69 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		EF0E01A222AB2E7D0073E27E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		EF0E01A422AB30280073E27E /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		EF0E01A522AB30280073E27E /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -108,7 +116,6 @@
 		EFB210D6227ACAE000A62861 /* DeskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskCell.swift; sourceTree = "<group>"; };
 		EFB210D7227ACAE000A62861 /* DeskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeskCell.xib; sourceTree = "<group>"; };
 		EFB210DB227ACFD200A62861 /* Desk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Desk.swift; sourceTree = "<group>"; };
-		EFB210DE227AD1FD00A62861 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		EFB210E0227AD21700A62861 /* DeskHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskHelper.swift; sourceTree = "<group>"; };
 		EFB210E3227AD45B00A62861 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		EFB210E5227ADB5C00A62861 /* VegaScrollFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegaScrollFlowLayout.swift; sourceTree = "<group>"; };
@@ -126,6 +133,13 @@
 		EFBEC48C22AE045A000BBC8A /* OrderDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailTableViewCell.swift; sourceTree = "<group>"; };
 		EFBEC48D22AE045A000BBC8A /* OrderDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailTableViewCell.xib; sourceTree = "<group>"; };
 		EFBEC49022AE0554000BBC8A /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		EFBEC49322AE4AE8000BBC8A /* LoginScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenViewController.swift; sourceTree = "<group>"; };
+		EFBEC49422AE4AE8000BBC8A /* SignUpScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpScreenViewController.swift; sourceTree = "<group>"; };
+		EFBEC49522AE4AE8000BBC8A /* LandingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
+		EFBEC49922AE4B55000BBC8A /* UICustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTextField.swift; sourceTree = "<group>"; };
+		EFBEC49B22AE4B67000BBC8A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = ../../../../../ShareAds/ShareAds/Controls/UIColor.swift; sourceTree = "<group>"; };
+		EFBEC49D22AE4C05000BBC8A /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		EFBEC49F22AE4C24000BBC8A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		EFC1037F22895F11000CE584 /* CheckOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
 		EFF6AF32227D91C700380851 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
 		EFF6AF36227DA3AC00380851 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -236,6 +250,7 @@
 		EFB210B52279ED3C00A62861 /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				EFBEC49222AE4AE8000BBC8A /* Login-SignUp */,
 				EFB210DD227AD1DD00A62861 /* Extension */,
 				EFB210CA2279F14900A62861 /* Table-Order */,
 				EF0E01A122AB2E400073E27E /* Setting */,
@@ -244,6 +259,7 @@
 				EFB210D02279F40C00A62861 /* Main.storyboard */,
 				EFB210C12279ED3F00A62861 /* LaunchScreen.storyboard */,
 				EFB210C42279ED3F00A62861 /* Info.plist */,
+				EF0BFD2D22B0FAEB0009CC69 /* HomeTabBarController.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -282,10 +298,13 @@
 		EFB210DD227AD1DD00A62861 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				EFBEC49F22AE4C24000BBC8A /* UIViewController.swift */,
+				EFBEC49D22AE4C05000BBC8A /* UITextField.swift */,
+				EFBEC49B22AE4B67000BBC8A /* UIColor.swift */,
+				EFBEC49922AE4B55000BBC8A /* UICustomTextField.swift */,
 				EFB782E8227F27D70023A4DF /* CartHelper.swift */,
 				EFB210E0227AD21700A62861 /* DeskHelper.swift */,
 				EFF6AF3A227EACA300380851 /* MenuHelper.swift */,
-				EFB210DE227AD1FD00A62861 /* UIColor.swift */,
 				EFB210E3227AD45B00A62861 /* Date.swift */,
 				EFB782DB227F237A0023A4DF /* UIButton.swift */,
 				EFB210E5227ADB5C00A62861 /* VegaScrollFlowLayout.swift */,
@@ -332,6 +351,16 @@
 				EFBEC49022AE0554000BBC8A /* OrderDetailViewController.swift */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		EFBEC49222AE4AE8000BBC8A /* Login-SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				EFBEC49322AE4AE8000BBC8A /* LoginScreenViewController.swift */,
+				EFBEC49422AE4AE8000BBC8A /* SignUpScreenViewController.swift */,
+				EFBEC49522AE4AE8000BBC8A /* LandingScreenViewController.swift */,
+			);
+			path = "Login-SignUp";
 			sourceTree = "<group>";
 		};
 		F55F60E559498CAF31866AAC /* Pods */ = {
@@ -458,8 +487,6 @@
 				"${BUILT_PRODUCTS_DIR}/FoldingCell/FoldingCell.framework",
 				"${BUILT_PRODUCTS_DIR}/JNSegmentedControl/JNSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/MIBadgeButton-Swift/MIBadgeButton_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeableTabBarController/SwipeableTabBarController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -470,8 +497,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoldingCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JNSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MIBadgeButton_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeableTabBarController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,9 +515,11 @@
 				EF48EE6822ACF54E000BB687 /* AddNewFoodViewController.swift in Sources */,
 				EF0E01C522ACA2060073E27E /* DeskSettingTableViewCell.swift in Sources */,
 				EF0E01B022AB50A10073E27E /* Place.swift in Sources */,
+				EFBEC4A022AE4C24000BBC8A /* UIViewController.swift in Sources */,
 				EFBEC49122AE0554000BBC8A /* OrderDetailViewController.swift in Sources */,
 				EFBEC48922ADDE6C000BBC8A /* OrderViewController.swift in Sources */,
 				EFF6AF3B227EACA300380851 /* MenuHelper.swift in Sources */,
+				EF0BFD2E22B0FAEB0009CC69 /* HomeTabBarController.swift in Sources */,
 				EF0E01A322AB2E7D0073E27E /* SettingViewController.swift in Sources */,
 				EFB210E6227ADB5C00A62861 /* VegaScrollFlowLayout.swift in Sources */,
 				EFBEC48E22AE045A000BBC8A /* OrderDetailTableViewCell.swift in Sources */,
@@ -501,10 +528,13 @@
 				EFC1038022895F11000CE584 /* CheckOutViewController.swift in Sources */,
 				EF0E01B222AB51FF0073E27E /* Server.swift in Sources */,
 				EF48EE6622ACEF73000BB687 /* FoodViewController.swift in Sources */,
+				EFBEC49C22AE4B67000BBC8A /* UIColor.swift in Sources */,
 				EF0E01A622AB30280073E27E /* SettingTableViewCell.swift in Sources */,
 				EF68188822816DD900DDA714 /* MenuContainerViewController.swift in Sources */,
 				EF0E01B922AC82DF0073E27E /* GroupFoodViewController.swift in Sources */,
+				EFBEC49822AE4AE8000BBC8A /* LandingScreenViewController.swift in Sources */,
 				EFB782E9227F27D70023A4DF /* CartHelper.swift in Sources */,
+				EFBEC49A22AE4B55000BBC8A /* UICustomTextField.swift in Sources */,
 				EF0E01B622AC82D00073E27E /* GroupFoodTableViewCell.swift in Sources */,
 				EF0E01AD22AB4F3E0073E27E /* PlaceTableViewCell.swift in Sources */,
 				EFB210D8227ACAE000A62861 /* DeskCell.swift in Sources */,
@@ -512,10 +542,10 @@
 				EFBEC48B22AE01A1000BBC8A /* OrderDetail.swift in Sources */,
 				EFF6AF33227D91C700380851 /* MenuOrderViewController.swift in Sources */,
 				EFB782DC227F237A0023A4DF /* UIButton.swift in Sources */,
-				EFB210DF227AD1FD00A62861 /* UIColor.swift in Sources */,
 				EF0E01C822ACA3430073E27E /* DeskSetting.swift in Sources */,
 				EFB210DC227ACFD200A62861 /* Desk.swift in Sources */,
 				EFF6AF38227DA3AC00380851 /* MenuCell.swift in Sources */,
+				EFBEC49722AE4AE8000BBC8A /* SignUpScreenViewController.swift in Sources */,
 				EFBEC48622ADD981000BBC8A /* OrderTableViewCell.swift in Sources */,
 				EFB210E4227AD45B00A62861 /* Date.swift in Sources */,
 				EFB782E6227F25CE0023A4DF /* CartCell.swift in Sources */,
@@ -524,8 +554,10 @@
 				EFB210B72279ED3C00A62861 /* AppDelegate.swift in Sources */,
 				EF0E01BB22AC82EC0073E27E /* GroupFood.swift in Sources */,
 				EF681886228161B900DDA714 /* MenuDetailViewController.swift in Sources */,
+				EFBEC49622AE4AE8000BBC8A /* LoginScreenViewController.swift in Sources */,
 				EF48EE5922ACAAAE000BB687 /* AddNewDeskViewController.swift in Sources */,
 				EF48EE5B22ACBA19000BB687 /* DeskSettingViewController.swift in Sources */,
+				EFBEC49E22AE4C05000BBC8A /* UITextField.swift in Sources */,
 				EF68188322802EF600DDA714 /* CartTableSectionHeader.swift in Sources */,
 				EFBEC48122ADD3A6000BBC8A /* Order.swift in Sources */,
 				EFB210B92279ED3C00A62861 /* DeskViewController.swift in Sources */,

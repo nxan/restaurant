@@ -12,7 +12,6 @@ target 'Restaurant' do
   pod "MIBadgeButton-Swift", :git => 'https://github.com/mustafaibrahim989/MIBadgeButton-Swift.git', :branch => 'master'
 	pod 'Alamofire', '~> 4.3'
   
-  pod 'Socket.IO-Client-Swift', '~> 13.0.0'
   
 
 

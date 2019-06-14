@@ -41,6 +41,8 @@ class MenuOrderViewController: UIViewController {
     var flag = false
     var flagRemove = false
     var flagAdded = ""
+    var arrayGroup: [Int] = []
+
     
     
     var defaultAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.black]
@@ -61,7 +63,6 @@ class MenuOrderViewController: UIViewController {
         countItemCart = desk.quantity
         buttonBasket.badgeString = String(countItemCart)
         
-        generateGroupFood()
         generateFood(group: 1)
         
         
@@ -70,14 +71,7 @@ class MenuOrderViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.segmentedControlView.valueDidChange = { segmentIndex in
-            if (segmentIndex == 0) { self.generateFood(group: 1) }
-            if (segmentIndex == 1) { self.generateFood(group: 2) }
-            if (segmentIndex == 2) { self.generateFood(group: 3) }
-            if (segmentIndex == 3) { self.generateFood(group: 4) }
-            self.filterMenu = self.menu
-            self.tableView.reloadData()
-        }
+        generateGroupFood()
         self.buttonBasket.badgeString = String(self.countItemCart)
     }
     
@@ -102,6 +96,9 @@ class MenuOrderViewController: UIViewController {
     }
                
     func generateGroupFood() {
+        self.arrayGroup.removeAll()
+        self.attributedStringItems.removeAll()
+        self.selectedAttributedStringItems.removeAll()
         Alamofire.request(URL_GROUP_FOOD, method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in
                 if let responseValue = response.result.value as! [String: Any]? {
@@ -113,6 +110,10 @@ class MenuOrderViewController: UIViewController {
                             
                             let selectedAttributedString = NSAttributedString(string: item["TenNhom"] as! String, attributes: self.selectedAttributes)
                             self.selectedAttributedStringItems.append(selectedAttributedString)
+                            self.arrayGroup.append(item["IDNhom"] as! Int)
+                            self.segmentedControlView.valueDidChange = { segmentIndex in
+                                self.generateFood(group: self.arrayGroup[segmentIndex])
+                            }
                         }
                         self.showSegmentedControlView()
                     }

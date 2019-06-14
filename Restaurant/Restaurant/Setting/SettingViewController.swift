@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import Alamofire
 
 class SettingViewController: UIViewController {
+    
+    let url = Server.init().url
+    lazy var URL_USER = url + "user/"
+    
+    @IBOutlet weak var labelName: UILabel!
     
     var titleSetting = [["Tài khoản", "Khu vực", "Bàn", "Nhóm thực phẩm", "Thực đơn", "Hóa đơn"]]
     var subtitle = [["Thông tin tài khoản của khách hàng", "Quản lý khu vực nhà hàng", "Quản lý bàn trong nhà hàng", "Quản lý nhóm thực phẩm", "Quản lý món ăn trong thực đơn", "Quản lý hóa đơn bán hàng"]]
@@ -17,7 +23,20 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        generateFullName(email: UserDefaults.standard.string(forKey: "key_email")!)
+    }
+    
+    func generateFullName(email: String) {
+        Alamofire.request(URL_USER + email, method: .get, encoding: JSONEncoding.default).responseJSON
+            { (response) in
+                if let responseValue = response.result.value as! [String: Any]? {
+                    if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
+                        for item in responseOrder {
+                            self.labelName.text = item["name"] as? String
+                        }
+                    }
+                }
+        }
     }
     
 }
@@ -47,9 +66,9 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         if(indexPath.section == 0) {
             switch indexPath.row {
             case 0:
-//                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PROFILE")
-//                self.navigationController?.pushViewController(nextViewController, animated:true)
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "PROFILE")
+                self.navigationController?.pushViewController(nextViewController, animated:true)
                 break
             case 1:
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
