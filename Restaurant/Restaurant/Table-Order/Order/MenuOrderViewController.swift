@@ -20,10 +20,11 @@ class MenuOrderViewController: UIViewController {
     @IBOutlet var labelDesk: UILabel!
     @IBOutlet weak var labelTime: UILabel!
     
-    let URL_GROUP_FOOD = "http://localhost:8888/groupfood/"
-    let URL_FOOD = "http://localhost:8888/food/"
-    let URL_ORDER = "http://localhost:8888/order/"
-    let URL_ORDER_DETAIL = "http://localhost:8888/orderdetail/"
+    let url = Server.init().url
+    lazy var URL_GROUP_FOOD = url + "groupfood/"
+    lazy var URL_FOOD = url + "food/"
+    lazy var URL_ORDER_DETAIL = url + "orderdetail/"
+    lazy var URL_ORDER = url + "order/"
     
     let cellId = "MenuCell"
     let time = Date()

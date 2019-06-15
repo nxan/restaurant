@@ -18,9 +18,10 @@ private let topInset: CGFloat = 10
 
 class DeskViewController: UIViewController {
     
-    let URL_DESK = "http://localhost:8888/desk/"
-    let URL_PLACE = "http://localhost:8888/place/"
-    let URL_ORDER = "http://localhost:8888/order/"
+    let url = Server.init().url
+    lazy var URL_DESK = url + "desk/"
+    lazy var URL_PLACE = url + "place/"
+    lazy var URL_ORDER = url + "order/"
     
     @IBOutlet var segmentedControlView: JNSegmentedCollectionView!
     @IBOutlet weak var collectionView: UICollectionView!

@@ -11,9 +11,10 @@ import Alamofire
 
 class CheckOutViewController: UIViewController {
     
-    let URL_ORDER_DETAIL = "http://localhost:8888/orderdetail/"
-    let URL_ORDER = "http://localhost:8888/order/"
-    let URL_DESK = "http://localhost:8888/desk/"
+    let url = Server.init().url
+    lazy var URL_ORDER_DETAIL = url + "orderdetail/"
+    lazy var URL_ORDER = url + "order/"
+    lazy var URL_DESK = url + "desk/"
 
     private let buttonFont = UIFont.boldSystemFont(ofSize: 20)
     private let backgroundColor: UIColor = .white

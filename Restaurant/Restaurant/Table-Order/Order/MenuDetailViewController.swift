@@ -11,7 +11,8 @@ import Alamofire
 
 class MenuDetailViewController: UITableViewController {
     
-    let URL_ORDER_DETAIL = "http://localhost:8888/orderdetail/"
+    let url = Server.init().url
+    lazy var URL_ORDER_DETAIL = url + "orderdetail/"
     
     @IBOutlet weak var txtProductName: UITextField!
     @IBOutlet weak var txtType: UITextField!

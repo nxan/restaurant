@@ -24,6 +24,7 @@
 		EF0E01C522ACA2060073E27E /* DeskSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01C322ACA2060073E27E /* DeskSettingTableViewCell.swift */; };
 		EF0E01C622ACA2060073E27E /* DeskSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0E01C422ACA2060073E27E /* DeskSettingTableViewCell.xib */; };
 		EF0E01C822ACA3430073E27E /* DeskSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01C722ACA3430073E27E /* DeskSetting.swift */; };
+		EF35F36022B4AD6700F5B28D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35F35F22B4AD6700F5B28D /* ProfileTableViewController.swift */; };
 		EF48EE5922ACAAAE000BB687 /* AddNewDeskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48EE5822ACAAAE000BB687 /* AddNewDeskViewController.swift */; };
 		EF48EE5B22ACBA19000BB687 /* DeskSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48EE5A22ACBA19000BB687 /* DeskSettingViewController.swift */; };
 		EF48EE6022ACEB40000BB687 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48EE5F22ACEB40000BB687 /* Food.swift */; };
@@ -95,6 +96,7 @@
 		EF0E01C322ACA2060073E27E /* DeskSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskSettingTableViewCell.swift; sourceTree = "<group>"; };
 		EF0E01C422ACA2060073E27E /* DeskSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeskSettingTableViewCell.xib; sourceTree = "<group>"; };
 		EF0E01C722ACA3430073E27E /* DeskSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskSetting.swift; sourceTree = "<group>"; };
+		EF35F35F22B4AD6700F5B28D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		EF48EE5822ACAAAE000BB687 /* AddNewDeskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDeskViewController.swift; sourceTree = "<group>"; };
 		EF48EE5A22ACBA19000BB687 /* DeskSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskSettingViewController.swift; sourceTree = "<group>"; };
 		EF48EE5F22ACEB40000BB687 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		EF0E01A122AB2E400073E27E /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				EF35F35E22B4AD4A00F5B28D /* Profile */,
 				EFBEC47F22ADD37F000BBC8A /* Order */,
 				EF0E01A822AB4A490073E27E /* Place */,
 				EF0E01BC22AC8AF60073E27E /* Desk */,
@@ -215,6 +218,14 @@
 				EF48EE5A22ACBA19000BB687 /* DeskSettingViewController.swift */,
 			);
 			path = Desk;
+			sourceTree = "<group>";
+		};
+		EF35F35E22B4AD4A00F5B28D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EF35F35F22B4AD6700F5B28D /* ProfileTableViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		EF48EE5E22ACEB13000BB687 /* Food */ = {
@@ -545,6 +556,7 @@
 				EF0E01C822ACA3430073E27E /* DeskSetting.swift in Sources */,
 				EFB210DC227ACFD200A62861 /* Desk.swift in Sources */,
 				EFF6AF38227DA3AC00380851 /* MenuCell.swift in Sources */,
+				EF35F36022B4AD6700F5B28D /* ProfileTableViewController.swift in Sources */,
 				EFBEC49722AE4AE8000BBC8A /* SignUpScreenViewController.swift in Sources */,
 				EFBEC48622ADD981000BBC8A /* OrderTableViewCell.swift in Sources */,
 				EFB210E4227AD45B00A62861 /* Date.swift in Sources */,
