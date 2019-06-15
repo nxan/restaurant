@@ -25,6 +25,7 @@
 		EF0E01C622ACA2060073E27E /* DeskSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF0E01C422ACA2060073E27E /* DeskSettingTableViewCell.xib */; };
 		EF0E01C822ACA3430073E27E /* DeskSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0E01C722ACA3430073E27E /* DeskSetting.swift */; };
 		EF35F36022B4AD6700F5B28D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35F35F22B4AD6700F5B28D /* ProfileTableViewController.swift */; };
+		EF35F36222B4D42F00F5B28D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF35F36122B4D42F00F5B28D /* UIColor.swift */; };
 		EF48EE5922ACAAAE000BB687 /* AddNewDeskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48EE5822ACAAAE000BB687 /* AddNewDeskViewController.swift */; };
 		EF48EE5B22ACBA19000BB687 /* DeskSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48EE5A22ACBA19000BB687 /* DeskSettingViewController.swift */; };
 		EF48EE6022ACEB40000BB687 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48EE5F22ACEB40000BB687 /* Food.swift */; };
@@ -65,7 +66,6 @@
 		EFBEC49722AE4AE8000BBC8A /* SignUpScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49422AE4AE8000BBC8A /* SignUpScreenViewController.swift */; };
 		EFBEC49822AE4AE8000BBC8A /* LandingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49522AE4AE8000BBC8A /* LandingScreenViewController.swift */; };
 		EFBEC49A22AE4B55000BBC8A /* UICustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49922AE4B55000BBC8A /* UICustomTextField.swift */; };
-		EFBEC49C22AE4B67000BBC8A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49B22AE4B67000BBC8A /* UIColor.swift */; };
 		EFBEC49E22AE4C05000BBC8A /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49D22AE4C05000BBC8A /* UITextField.swift */; };
 		EFBEC4A022AE4C24000BBC8A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49F22AE4C24000BBC8A /* UIViewController.swift */; };
 		EFC1038022895F11000CE584 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1037F22895F11000CE584 /* CheckOutViewController.swift */; };
@@ -97,6 +97,7 @@
 		EF0E01C422ACA2060073E27E /* DeskSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeskSettingTableViewCell.xib; sourceTree = "<group>"; };
 		EF0E01C722ACA3430073E27E /* DeskSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskSetting.swift; sourceTree = "<group>"; };
 		EF35F35F22B4AD6700F5B28D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		EF35F36122B4D42F00F5B28D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		EF48EE5822ACAAAE000BB687 /* AddNewDeskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDeskViewController.swift; sourceTree = "<group>"; };
 		EF48EE5A22ACBA19000BB687 /* DeskSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskSettingViewController.swift; sourceTree = "<group>"; };
 		EF48EE5F22ACEB40000BB687 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		EFBEC49422AE4AE8000BBC8A /* SignUpScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpScreenViewController.swift; sourceTree = "<group>"; };
 		EFBEC49522AE4AE8000BBC8A /* LandingScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreenViewController.swift; sourceTree = "<group>"; };
 		EFBEC49922AE4B55000BBC8A /* UICustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICustomTextField.swift; sourceTree = "<group>"; };
-		EFBEC49B22AE4B67000BBC8A /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = ../../../../../ShareAds/ShareAds/Controls/UIColor.swift; sourceTree = "<group>"; };
 		EFBEC49D22AE4C05000BBC8A /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		EFBEC49F22AE4C24000BBC8A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		EFC1037F22895F11000CE584 /* CheckOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
@@ -311,7 +311,6 @@
 			children = (
 				EFBEC49F22AE4C24000BBC8A /* UIViewController.swift */,
 				EFBEC49D22AE4C05000BBC8A /* UITextField.swift */,
-				EFBEC49B22AE4B67000BBC8A /* UIColor.swift */,
 				EFBEC49922AE4B55000BBC8A /* UICustomTextField.swift */,
 				EFB782E8227F27D70023A4DF /* CartHelper.swift */,
 				EFB210E0227AD21700A62861 /* DeskHelper.swift */,
@@ -320,6 +319,7 @@
 				EFB782DB227F237A0023A4DF /* UIButton.swift */,
 				EFB210E5227ADB5C00A62861 /* VegaScrollFlowLayout.swift */,
 				EF0E01B122AB51FF0073E27E /* Server.swift */,
+				EF35F36122B4D42F00F5B28D /* UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -531,6 +531,7 @@
 				EFBEC48922ADDE6C000BBC8A /* OrderViewController.swift in Sources */,
 				EFF6AF3B227EACA300380851 /* MenuHelper.swift in Sources */,
 				EF0BFD2E22B0FAEB0009CC69 /* HomeTabBarController.swift in Sources */,
+				EF35F36222B4D42F00F5B28D /* UIColor.swift in Sources */,
 				EF0E01A322AB2E7D0073E27E /* SettingViewController.swift in Sources */,
 				EFB210E6227ADB5C00A62861 /* VegaScrollFlowLayout.swift in Sources */,
 				EFBEC48E22AE045A000BBC8A /* OrderDetailTableViewCell.swift in Sources */,
@@ -539,7 +540,6 @@
 				EFC1038022895F11000CE584 /* CheckOutViewController.swift in Sources */,
 				EF0E01B222AB51FF0073E27E /* Server.swift in Sources */,
 				EF48EE6622ACEF73000BB687 /* FoodViewController.swift in Sources */,
-				EFBEC49C22AE4B67000BBC8A /* UIColor.swift in Sources */,
 				EF0E01A622AB30280073E27E /* SettingTableViewCell.swift in Sources */,
 				EF68188822816DD900DDA714 /* MenuContainerViewController.swift in Sources */,
 				EF0E01B922AC82DF0073E27E /* GroupFoodViewController.swift in Sources */,
