@@ -26,6 +26,10 @@ class SettingViewController: UIViewController {
         generateFullName(email: UserDefaults.standard.string(forKey: "key_email")!)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        generateFullName(email: UserDefaults.standard.string(forKey: "key_email")!)
+    }
+    
     func generateFullName(email: String) {
         Alamofire.request(URL_USER + email, method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in

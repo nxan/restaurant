@@ -665,7 +665,7 @@
         <!--Cài đặt-->
         <scene sceneID="HDY-1n-uQa">
             <objects>
-                <viewController id="bgh-Cj-sXI" customClass="SettingViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SETTING" id="bgh-Cj-sXI" customClass="SettingViewController" customModule="Restaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bkV-LQ-dx7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1499,7 +1499,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jW4-6e-KZW">
-                                                    <rect key="frame" x="93" y="-1" width="366" height="44"/>
+                                                    <rect key="frame" x="93" y="1.0000000000001421" width="282" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1522,8 +1522,8 @@
                                                     <color key="textColor" red="0.34766855839999999" green="0.60523599390000005" blue="0.98985928300000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxm-IB-Vub">
-                                                    <rect key="frame" x="93" y="-1" width="366" height="44"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxm-IB-Vub">
+                                                    <rect key="frame" x="93" y="1.4210854715202004e-13" width="282" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1602,6 +1602,9 @@
                                                     <state key="normal" title="Cập nhật thông tin">
                                                         <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="update:" destination="LrH-UQ-8YC" eventType="touchUpInside" id="rh4-Ki-SBo"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1620,6 +1623,9 @@
                                                     <state key="normal" title="Đăng xuất">
                                                         <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="logout:" destination="LrH-UQ-8YC" eventType="touchUpInside" id="5Tt-yW-NQP"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1628,6 +1634,12 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
+                    <connections>
+                        <outlet property="txtEmail" destination="nxm-IB-Vub" id="cWv-Bg-fU8"/>
+                        <outlet property="txtName" destination="jW4-6e-KZW" id="dqu-KZ-Qgr"/>
+                        <outlet property="txtPassword" destination="dXu-Ht-ePz" id="xuw-Sp-B9P"/>
+                        <outlet property="txtRetypePassword" destination="sL1-ep-WLi" id="2W8-4C-UIV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8D-Xc-dyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -180,7 +180,7 @@ class SignUpScreenViewController: UIViewController {
                 UIAlertAction in
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(withIdentifier: "LANDINGSCREEN")
-                self.present(vc, animated: true, completion: nil)
+                self.present(vc, animated: true, completion: nil)                
             }
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
