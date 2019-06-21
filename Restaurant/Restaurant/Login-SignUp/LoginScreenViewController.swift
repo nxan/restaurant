@@ -34,6 +34,7 @@ class LoginScreenViewController: UIViewController {
     
     private let separatorFont = UIFont.boldSystemFont(ofSize: 14)
     private let separatorTextColor = UIColor(hexString: "#464646")
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,7 +100,22 @@ class LoginScreenViewController: UIViewController {
     }
     
     @objc func didTapLoginButton() {
-        login(email: contactPointTextField.text!, password: passwordTextField.text!)
+        initIndicator()
+        if !Connectivity.isConnectedToInternet() {
+            alert(title: "Lỗi mạng", message: "Không có kết nối Internet. Vui lòng thử lại sau.")
+        }
+        else if(contactPointTextField.text == "" || passwordTextField.text == "") {
+            alert(title: "Vui lòng điền đầy đủ thông tin đăng nhập", message: "")
+        } else {
+            login(email: contactPointTextField.text!, password: passwordTextField.text!)
+        }
+        
+    }
+    
+    class Connectivity {
+        class func isConnectedToInternet() -> Bool {
+            return NetworkReachabilityManager()!.isReachable
+        }
     }
     
     @objc func didTapFacebookButton() {
@@ -119,6 +135,7 @@ class LoginScreenViewController: UIViewController {
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             if let httpResponse = response as? HTTPURLResponse {
                 if(httpResponse.statusCode == 200) {
+                    self.stopIndicator()
                     DispatchQueue.main.async {
                         self.defaultValues.set(email, forKey: "key_email")
                         self.defaultValues.set(true, forKey: "key_login")
@@ -139,6 +156,7 @@ class LoginScreenViewController: UIViewController {
     }
 
     func alert(title: String, message: String) {
+        self.stopIndicator()
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default)
@@ -148,6 +166,7 @@ class LoginScreenViewController: UIViewController {
     }
     
     func alertSignUp(title: String, message: String) {
+        self.stopIndicator()
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {

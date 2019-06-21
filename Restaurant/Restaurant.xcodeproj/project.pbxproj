@@ -69,6 +69,11 @@
 		EFBEC49E22AE4C05000BBC8A /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49D22AE4C05000BBC8A /* UITextField.swift */; };
 		EFBEC4A022AE4C24000BBC8A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBEC49F22AE4C24000BBC8A /* UIViewController.swift */; };
 		EFC1038022895F11000CE584 /* CheckOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1037F22895F11000CE584 /* CheckOutViewController.swift */; };
+		EFEDB4F422BC8FE20040A487 /* invoice.html in Resources */ = {isa = PBXBuildFile; fileRef = EFEDB4F322BC8FE20040A487 /* invoice.html */; };
+		EFEDB4F622BC8FF10040A487 /* last_item.html in Resources */ = {isa = PBXBuildFile; fileRef = EFEDB4F522BC8FF10040A487 /* last_item.html */; };
+		EFEDB4F822BC90090040A487 /* single_item.html in Resources */ = {isa = PBXBuildFile; fileRef = EFEDB4F722BC90090040A487 /* single_item.html */; };
+		EFEDB4FA22BC91470040A487 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEDB4F922BC91470040A487 /* PreviewViewController.swift */; };
+		EFEDB4FC22BC91710040A487 /* InvoiceComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEDB4FB22BC91710040A487 /* InvoiceComposer.swift */; };
 		EFF6AF33227D91C700380851 /* MenuOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF6AF32227D91C700380851 /* MenuOrderViewController.swift */; };
 		EFF6AF38227DA3AC00380851 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF6AF36227DA3AC00380851 /* MenuCell.swift */; };
 		EFF6AF39227DA3AC00380851 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFF6AF37227DA3AC00380851 /* MenuCell.xib */; };
@@ -143,6 +148,11 @@
 		EFBEC49D22AE4C05000BBC8A /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		EFBEC49F22AE4C24000BBC8A /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		EFC1037F22895F11000CE584 /* CheckOutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutViewController.swift; sourceTree = "<group>"; };
+		EFEDB4F322BC8FE20040A487 /* invoice.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = invoice.html; sourceTree = "<group>"; };
+		EFEDB4F522BC8FF10040A487 /* last_item.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = last_item.html; sourceTree = "<group>"; };
+		EFEDB4F722BC90090040A487 /* single_item.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = single_item.html; sourceTree = "<group>"; };
+		EFEDB4F922BC91470040A487 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		EFEDB4FB22BC91710040A487 /* InvoiceComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceComposer.swift; sourceTree = "<group>"; };
 		EFF6AF32227D91C700380851 /* MenuOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOrderViewController.swift; sourceTree = "<group>"; };
 		EFF6AF36227DA3AC00380851 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		EFF6AF37227DA3AC00380851 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
@@ -243,6 +253,7 @@
 		EFB210AA2279ED3C00A62861 = {
 			isa = PBXGroup;
 			children = (
+				EFEDB4F222BC8FBF0040A487 /* HTML Templates */,
 				EFB210B52279ED3C00A62861 /* Restaurant */,
 				EFB210B42279ED3C00A62861 /* Products */,
 				F55F60E559498CAF31866AAC /* Pods */,
@@ -345,6 +356,8 @@
 				EF68188122802EF600DDA714 /* CartTableSectionHeader.swift */,
 				EF68188222802EF600DDA714 /* CartTableSectionHeader.xib */,
 				EFC1037F22895F11000CE584 /* CheckOutViewController.swift */,
+				EFEDB4FB22BC91710040A487 /* InvoiceComposer.swift */,
+				EFEDB4F922BC91470040A487 /* PreviewViewController.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -372,6 +385,16 @@
 				EFBEC49522AE4AE8000BBC8A /* LandingScreenViewController.swift */,
 			);
 			path = "Login-SignUp";
+			sourceTree = "<group>";
+		};
+		EFEDB4F222BC8FBF0040A487 /* HTML Templates */ = {
+			isa = PBXGroup;
+			children = (
+				EFEDB4F322BC8FE20040A487 /* invoice.html */,
+				EFEDB4F522BC8FF10040A487 /* last_item.html */,
+				EFEDB4F722BC90090040A487 /* single_item.html */,
+			);
+			path = "HTML Templates";
 			sourceTree = "<group>";
 		};
 		F55F60E559498CAF31866AAC /* Pods */ = {
@@ -446,9 +469,12 @@
 				EFB210D9227ACAE000A62861 /* DeskCell.xib in Resources */,
 				EFB210D12279F40C00A62861 /* Main.storyboard in Resources */,
 				EF0E01AE22AB4F3E0073E27E /* PlaceTableViewCell.xib in Resources */,
+				EFEDB4F622BC8FF10040A487 /* last_item.html in Resources */,
+				EFEDB4F422BC8FE20040A487 /* invoice.html in Resources */,
 				EF0E01A722AB30280073E27E /* SettingTableViewCell.xib in Resources */,
 				EFF6AF39227DA3AC00380851 /* MenuCell.xib in Resources */,
 				EFBEC48F22AE045A000BBC8A /* OrderDetailTableViewCell.xib in Resources */,
+				EFEDB4F822BC90090040A487 /* single_item.html in Resources */,
 				EF48EE6422ACECFE000BB687 /* FoodTableViewCell.xib in Resources */,
 				EF0E01B722AC82D00073E27E /* GroupFoodTableViewCell.xib in Resources */,
 				EF68188422802EF600DDA714 /* CartTableSectionHeader.xib in Resources */,
@@ -557,6 +583,7 @@
 				EFB210DC227ACFD200A62861 /* Desk.swift in Sources */,
 				EFF6AF38227DA3AC00380851 /* MenuCell.swift in Sources */,
 				EF35F36022B4AD6700F5B28D /* ProfileTableViewController.swift in Sources */,
+				EFEDB4FC22BC91710040A487 /* InvoiceComposer.swift in Sources */,
 				EFBEC49722AE4AE8000BBC8A /* SignUpScreenViewController.swift in Sources */,
 				EFBEC48622ADD981000BBC8A /* OrderTableViewCell.swift in Sources */,
 				EFB210E4227AD45B00A62861 /* Date.swift in Sources */,
@@ -565,6 +592,7 @@
 				EFB210E1227AD21700A62861 /* DeskHelper.swift in Sources */,
 				EFB210B72279ED3C00A62861 /* AppDelegate.swift in Sources */,
 				EF0E01BB22AC82EC0073E27E /* GroupFood.swift in Sources */,
+				EFEDB4FA22BC91470040A487 /* PreviewViewController.swift in Sources */,
 				EF681886228161B900DDA714 /* MenuDetailViewController.swift in Sources */,
 				EFBEC49622AE4AE8000BBC8A /* LoginScreenViewController.swift in Sources */,
 				EF48EE5922ACAAAE000BB687 /* AddNewDeskViewController.swift in Sources */,
@@ -712,16 +740,18 @@
 			baseConfigurationReference = E3866BAE48BFF4D21354E065 /* Pods-Restaurant.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V6DNR25453;
+				DEVELOPMENT_TEAM = W7D645L5TK;
 				INFOPLIST_FILE = Restaurant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nxa.Restaurant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nxa.Restaurant.v1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -732,16 +762,18 @@
 			baseConfigurationReference = CD55A60B787AC1919418DD98 /* Pods-Restaurant.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V6DNR25453;
+				DEVELOPMENT_TEAM = W7D645L5TK;
 				INFOPLIST_FILE = Restaurant/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nxa.Restaurant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nxa.Restaurant.v1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

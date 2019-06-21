@@ -22,6 +22,8 @@ class CheckOutViewController: UIViewController {
     
     @IBOutlet var buttonplaceOrder: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var labelDesk: UILabel!
+    
     
     let cellId = "CartCell"
     var cart: [Cart] = []
@@ -31,6 +33,7 @@ class CheckOutViewController: UIViewController {
     var total = 0.0
     var desk:Desk!
     var time = Date()
+    var endTime = ""
     
     @IBAction func buttonBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -66,12 +69,13 @@ class CheckOutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customButtonPlaceOrder()
-        
+        labelDesk.text = desk.deskName
         getFoodByDesk(deskId: desk.deskId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.initIndicator()
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
     }
@@ -91,8 +95,11 @@ class CheckOutViewController: UIViewController {
     }
     
     @objc func placeOrder() {
+        let time = Date()
+        let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
+        self.endTime = "\(time.hour):\(minute)"
         var orderId = ""
-        Alamofire.request(URL_ORDER + "checkDesk/\(desk.deskId)", method: .get, encoding: JSONEncoding.default).responseJSON
+        Alamofire.request(self.URL_ORDER + "checkDesk/\(self.desk.deskId)", method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in
                 if let responseValue = response.result.value as! [String: Any]? {
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
@@ -101,10 +108,11 @@ class CheckOutViewController: UIViewController {
                         }
                         self.pay(orderId: orderId)
                         self.updateDeskEmpty(deskId: self.desk.deskId)
-                        self.alert(title: "Thông báo", message: "Đơn hàng đã được thanh toán")
+                        //self.alert(title: "Thông báo", message: "Đơn hàng đã được thanh toán")
                     }
                 }
         }
+        
     }
     
     func getFoodByDesk(deskId: Int) {
@@ -115,6 +123,7 @@ class CheckOutViewController: UIViewController {
                         for item in responseOrder {
                             self.cart.append(Cart(id: item["MaMon"] as! Int, name: item["TenMon"] as! String, quantity: item["SoLuong"] as! Int, price: item["DonGiaBan"] as! Double, updated: false, isNew: false))
                             self.tableView.reloadData()
+                            self.stopIndicator()
                         }
                     }
                 }
@@ -143,11 +152,9 @@ class CheckOutViewController: UIViewController {
     }
     
     func pay(orderId: String) {
-        let time = Date()
-        let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
         let parameters = [
             "SOHOADON": orderId,
-            "GIORA": "\(time.hour):\(minute)"
+            "GIORA": endTime
             ] as Dictionary<String, Any>
         print(parameters)
         var request = URLRequest(url: URL(string: URL_ORDER + "pay")!)
@@ -169,13 +176,20 @@ class CheckOutViewController: UIViewController {
     
     func alert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {
-            UIAlertAction in
-            let controller = self.navigationController!.viewControllers[0] as! DeskViewController
-            self.navigationController!.popToViewController(controller, animated: true)
-        }
+        let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? PreviewViewController,
+            segue.identifier == "SHOWPDF" {
+            viewController.cart = cart
+            viewController.desk = desk
+            viewController.timeOn = desk.timeOn
+            viewController.fee = fee
+        }
+      
     }
     
 }

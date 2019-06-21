@@ -118,6 +118,7 @@ class SignUpScreenViewController: UIViewController {
     }
     
     @objc func didTapSignUpButton() {
+        self.initIndicator()
         if(emailTextField.text == "" || passwordTextField.text == "" || retypePasswordTextField.text == "" || fullnameTextField.text == "") {
             alert(title: "Vui lòng nhập đầy đủ thông tin", message: "")
         } else if(passwordTextField.text != retypePasswordTextField.text) {
@@ -165,6 +166,7 @@ class SignUpScreenViewController: UIViewController {
 
     
     func alert(title: String, message: String) {
+        self.stopIndicator()
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default)
@@ -174,6 +176,7 @@ class SignUpScreenViewController: UIViewController {
     }
     
     func alertSignUp(title: String, message: String) {
+        self.stopIndicator()
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {

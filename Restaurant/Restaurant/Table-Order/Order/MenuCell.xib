@@ -20,19 +20,28 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WM5-vf-tVa">
-                        <rect key="frame" x="25" y="15" width="46.5" height="20.5"/>
+                        <rect key="frame" x="25" y="15" width="252" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="252" id="4ye-fB-OrU"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Số lượng: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5no-r2-lO4">
-                        <rect key="frame" x="25" y="55.5" width="78" height="18"/>
+                        <rect key="frame" x="25" y="56" width="78" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="bIh-DZ-noD"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ziC-24-lqG">
                         <rect key="frame" x="365" y="25" width="35" height="34.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="AXO-e2-HYc"/>
+                        </constraints>
                         <state key="normal" title="Button" image="add"/>
                         <connections>
                             <action selector="buttonAddOrder:" destination="IUf-H7-ZM0" eventType="touchUpInside" id="oYN-kg-YVh"/>
@@ -46,16 +55,16 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="yoe-Po-EXn" secondAttribute="trailing" constant="69" id="0Ve-hf-G3Q"/>
-                    <constraint firstItem="WM5-vf-tVa" firstAttribute="top" secondItem="vPp-MP-aIv" secondAttribute="topMargin" constant="4" id="6D0-3f-2qW"/>
-                    <constraint firstItem="5no-r2-lO4" firstAttribute="leading" secondItem="vPp-MP-aIv" secondAttribute="leadingMargin" constant="5" id="FIs-1k-Pcj"/>
-                    <constraint firstItem="yoe-Po-EXn" firstAttribute="top" secondItem="WM5-vf-tVa" secondAttribute="bottom" constant="-1.5" id="PYu-x0-OPX"/>
-                    <constraint firstItem="WM5-vf-tVa" firstAttribute="leading" secondItem="vPp-MP-aIv" secondAttribute="leadingMargin" constant="5" id="Xoy-DR-as4"/>
-                    <constraint firstItem="ziC-24-lqG" firstAttribute="top" secondItem="vPp-MP-aIv" secondAttribute="topMargin" constant="14" id="byA-cX-pad"/>
-                    <constraint firstItem="5no-r2-lO4" firstAttribute="top" secondItem="WM5-vf-tVa" secondAttribute="bottom" constant="20" id="jdt-Nr-SIH"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ziC-24-lqG" secondAttribute="trailing" id="kOl-px-KNB"/>
-                    <constraint firstItem="ziC-24-lqG" firstAttribute="leading" secondItem="yoe-Po-EXn" secondAttribute="trailing" constant="14" id="sVL-u8-SX1"/>
-                    <constraint firstItem="ziC-24-lqG" firstAttribute="centerY" secondItem="vPp-MP-aIv" secondAttribute="centerY" id="woX-fR-NsZ"/>
+                    <constraint firstItem="ziC-24-lqG" firstAttribute="leading" secondItem="yoe-Po-EXn" secondAttribute="trailing" constant="14" id="Iqr-bs-K3v"/>
+                    <constraint firstItem="5no-r2-lO4" firstAttribute="bottom" secondItem="vPp-MP-aIv" secondAttribute="bottomMargin" id="JPS-tD-LgA"/>
+                    <constraint firstItem="ziC-24-lqG" firstAttribute="trailing" secondItem="vPp-MP-aIv" secondAttribute="trailingMargin" id="KBs-GX-gnO"/>
+                    <constraint firstItem="ziC-24-lqG" firstAttribute="centerY" secondItem="vPp-MP-aIv" secondAttribute="centerY" id="Rva-Vk-XLQ"/>
+                    <constraint firstItem="WM5-vf-tVa" firstAttribute="top" secondItem="vPp-MP-aIv" secondAttribute="topMargin" constant="4" id="VH8-MU-oSc"/>
+                    <constraint firstItem="5no-r2-lO4" firstAttribute="top" secondItem="WM5-vf-tVa" secondAttribute="bottom" constant="20" id="Yri-80-Abf"/>
+                    <constraint firstItem="ziC-24-lqG" firstAttribute="top" secondItem="vPp-MP-aIv" secondAttribute="topMargin" constant="14" id="cDU-Ud-3Xf"/>
+                    <constraint firstItem="yoe-Po-EXn" firstAttribute="top" secondItem="vPp-MP-aIv" secondAttribute="topMargin" constant="23" id="jYO-G5-htJ"/>
+                    <constraint firstItem="WM5-vf-tVa" firstAttribute="leading" secondItem="vPp-MP-aIv" secondAttribute="leadingMargin" constant="5" id="kqW-0H-D0d"/>
+                    <constraint firstItem="WM5-vf-tVa" firstAttribute="leading" secondItem="5no-r2-lO4" secondAttribute="leading" id="uKf-ge-yCL"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="f1d-yM-RrT"/>
@@ -64,7 +73,7 @@
                 <outlet property="labelName" destination="WM5-vf-tVa" id="gjw-2v-wkL"/>
                 <outlet property="labelStock" destination="5no-r2-lO4" id="cmH-gH-8IO"/>
             </connections>
-            <point key="canvasLocation" x="148.80000000000001" y="59.820089955022496"/>
+            <point key="canvasLocation" x="-398.39999999999998" y="151.57421289355324"/>
         </tableViewCell>
     </objects>
     <resources>

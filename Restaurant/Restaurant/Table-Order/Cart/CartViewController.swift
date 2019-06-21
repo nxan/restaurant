@@ -46,12 +46,12 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
         customButtonPlaceOrder()
         labelDesk.text = desk.deskName
-        getFoodByDesk(deskId: desk.deskId)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getFoodByDesk(deskId: desk.deskId)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
@@ -86,6 +86,7 @@ class CartViewController: UIViewController {
                 "TongMon": countItemCart
                 ] as Dictionary<String, Any>
             print(parameters)
+            self.initIndicator()
             var request = URLRequest(url: URL(string: URL_ORDER)!)
             request.httpMethod = "POST"
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
@@ -105,6 +106,7 @@ class CartViewController: UIViewController {
         } else {
             self.checkDeskEnable(deskId: self.desk.deskId)
         }
+        self.stopIndicator()
     }
     
     func checkDeskEnable(deskId: Int) {
@@ -135,6 +137,7 @@ class CartViewController: UIViewController {
                             }
                         }
                     }
+                    self.stopIndicator()
                 }
         }
     }

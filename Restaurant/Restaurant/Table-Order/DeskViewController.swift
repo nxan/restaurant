@@ -43,9 +43,8 @@ class DeskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         generateFloor(floor: 1)
-        if Connectivity.isConnectedToInternet() {
-            print("Yes! internet is available.")
-            // do some tasks..
+        if !Connectivity.isConnectedToInternet() {
+            alert(title: "Lỗi mạng", message: "Tài khoản hoặc mật khẩu không đúng. Vui lòng thử lại.")
         }
         print(UserDefaults.standard.string(forKey: "key_email")!)
     }
@@ -58,14 +57,14 @@ class DeskViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.initIndicator()
         navigationController?.setNavigationBarHidden(false, animated: animated)
         
         if let value = UserDefaults.standard.value(forKey: "chooseSegmentedControl") {
             let selectedIndex = value as! Int
             generateFloor(floor: selectedIndex + 1)
-        }        
+        }
        generatePlace()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -80,6 +79,7 @@ class DeskViewController: UIViewController {
         self.selectedAttributedStringItems.removeAll()
         Alamofire.request(URL_PLACE, method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in
+                self.stopIndicator()
                 if let responseValue = response.result.value as! [String: Any]? {
                     print(response)
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
@@ -92,6 +92,7 @@ class DeskViewController: UIViewController {
                             self.selectedAttributedStringItems.append(selectedAttributedString)
                             self.arrayPlace.append(item["MaKhu"] as! Int)
                             self.segmentedControlView.valueDidChange = { segmentIndex in
+                                self.initIndicator()
                                 self.generateFloor(floor: self.arrayPlace[segmentIndex])
                             }
                         }
@@ -105,6 +106,7 @@ class DeskViewController: UIViewController {
         desks.removeAll()
         Alamofire.request(URL_DESK + "\(floor)", method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in
+                self.stopIndicator()
                 if let responseValue = response.result.value as! [String: Any]? {
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                         self.deskJSON = responseOrder
@@ -143,6 +145,16 @@ class DeskViewController: UIViewController {
         let itemWidth = UIScreen.main.bounds.width - 2 * xInset
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    func alert(title: String, message: String) {
+        self.stopIndicator()
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 
 }

@@ -27,6 +27,7 @@ class SettingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        initIndicator()
         generateFullName(email: UserDefaults.standard.string(forKey: "key_email")!)
     }
     
@@ -37,6 +38,7 @@ class SettingViewController: UIViewController {
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                         for item in responseOrder {
                             self.labelName.text = item["name"] as? String
+                            self.stopIndicator()
                         }
                     }
                 }

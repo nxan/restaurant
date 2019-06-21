@@ -113,6 +113,7 @@ class MenuOrderViewController: UIViewController {
                             self.selectedAttributedStringItems.append(selectedAttributedString)
                             self.arrayGroup.append(item["IDNhom"] as! Int)
                             self.segmentedControlView.valueDidChange = { segmentIndex in
+                                self.initIndicator()
                                 self.generateFood(group: self.arrayGroup[segmentIndex])
                             }
                         }
@@ -126,6 +127,7 @@ class MenuOrderViewController: UIViewController {
         menu.removeAll()
         Alamofire.request(URL_FOOD + "\(group)", method: .get, encoding: JSONEncoding.default).responseJSON
             { (response) in
+                self.stopIndicator()
                 if let responseValue = response.result.value as! [String: Any]? {
                     if let responseOrder = responseValue["recordset"] as! [[String: Any]]? {
                         self.menuJSON = responseOrder
