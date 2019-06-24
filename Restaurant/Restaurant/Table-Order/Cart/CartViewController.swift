@@ -121,8 +121,13 @@ class CartViewController: UIViewController {
                         }
                         if(self.flagDelete) {
                             self.removeItemOrder(orderId: orderId, foodId: self.foodId)
-                            self.updateQuantityFood(orderId: orderId)
-                            self.updateDeskQuantityFood(deskId: deskId)
+                            if(self.countItemCart != 0) {
+                                self.updateQuantityFood(orderId: orderId)
+                                self.updateDeskQuantityFood(deskId: deskId)
+                            } else {
+                                self.updateDeleteAllFood(deskId: deskId)
+                                self.removeOrder(orderId: orderId)
+                            }
                             self.flagDelete = false
                         } else {
                             if(!self.desk.enable) {
@@ -360,6 +365,23 @@ class CartViewController: UIViewController {
         task.resume()
     }
     
+    func removeOrder(orderId: String) {
+        var request = URLRequest(url: URL(string: URL_ORDER + "\(orderId)")!)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
+    }
+    
     func alertAddToCart(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Xác nhận", style: UIAlertAction.Style.default) {
@@ -437,9 +459,6 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
                 let tempIndexPath = IndexPath(row: indexPath.row, section: 0)
                 tableView.deleteRows(at: [tempIndexPath], with: .fade)
                 alert(title: "Thông báo", message: "Đã xóa thành công")
-                if(countItemCart == 0) {
-                    updateDeleteAllFood(deskId: desk.deskId)
-                }
             } else if (indexPath.section == 0 && !desk.enable) {
                 countItemCart -= cart[indexPath.row].quantity
                 cart.remove(at: indexPath.row)
