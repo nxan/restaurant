@@ -70,6 +70,7 @@ class CartViewController: UIViewController {
     }
     
     @objc func placeOrder() {
+        self.initIndicator()
         let minute = (time.minute < 10) ? "0\(time.minute)" : "\(time.minute)"
         if(!desk.enable) {
             let parameters = [
@@ -280,6 +281,28 @@ class CartViewController: UIViewController {
         task.resume()
     }
     
+    func updateDeleteAllFood(deskId: Int) {
+        let parameters = [
+            "GIOVAO": "Trống"
+            ] as Dictionary<String, Any>
+        print(parameters)
+        var request = URLRequest(url: URL(string: URL_DESK + "updateDeskNotFood/" + "\(deskId)")!)
+        request.httpMethod = "PUT"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            print(response!)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                print(json)
+            } catch {
+                print("error")
+            }
+        })
+        task.resume()
+    }
+    
     func updateDeskQuantityFood(deskId: Int) {
         let parameters = [
             "TongMon": countItemCart,
@@ -414,6 +437,9 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
                 let tempIndexPath = IndexPath(row: indexPath.row, section: 0)
                 tableView.deleteRows(at: [tempIndexPath], with: .fade)
                 alert(title: "Thông báo", message: "Đã xóa thành công")
+                if(countItemCart == 0) {
+                    updateDeleteAllFood(deskId: desk.deskId)
+                }
             } else if (indexPath.section == 0 && !desk.enable) {
                 countItemCart -= cart[indexPath.row].quantity
                 cart.remove(at: indexPath.row)
